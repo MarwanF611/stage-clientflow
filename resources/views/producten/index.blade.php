@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Klanten
+            Producten
         </h2>
     </x-slot>
 
@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
-                    Dit is de klanten pagina.
+                    Dit is de producten pagina.
 
-                    <x-primary-link href="/klanten/create">
-                        Klant toevoegen
+                    <x-primary-link href="/producten/create">
+                        product toevoegen
                     </x-primary-link>
                 </div>
             </div>
@@ -23,16 +23,16 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Naam klant
+                                Naam
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Bedrijf
+                                Type
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Email
+                                Voorraad
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                telefoonnummer
+                                Prijs
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 <span class="sr-only">Edit</span>

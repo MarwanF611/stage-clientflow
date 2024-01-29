@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductenController;
 use App\Http\Controllers\KlantenController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,10 @@ Route::middleware('auth')->group(function () {
     // Klanten
     Route::get('/klanten', [KlantenController::class, 'index'])->name('klanten.index');
     Route::get('/klanten/create', [KlantenController::class, 'create'])->name('klanten.create');
+
+    //producten
+    Route::get('/producten', [ProductenController::class, 'index'])->name('producten.index');
+    Route::get('/producten/create', [ProductenController::class, 'create'])->name('producten.create');
 });
 
 require __DIR__ . '/auth.php';
