@@ -24,7 +24,6 @@ class ProductenController extends Controller
             'type' => 'required',
             'prijs' => 'required',
             'voorraad' => 'required',
-
         ]);
 
         Product::create($request->all());

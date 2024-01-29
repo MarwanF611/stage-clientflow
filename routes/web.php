@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FactuurController;
 use App\Http\Controllers\ProductenController;
 use App\Http\Controllers\KlantenController;
 use App\Http\Controllers\ProfileController;
@@ -32,9 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/klanten/create', [KlantenController::class, 'create'])->name('klanten.create');
     Route::post('/klanten/create', [KlantenController::class, 'store'])->name('klanten.store');
 
-    //producten
+    // Producten
     Route::get('/producten', [ProductenController::class, 'index'])->name('producten.index');
     Route::get('/producten/create', [ProductenController::class, 'create'])->name('producten.create');
+    Route::post('/producten/create', [ProductenController::class, 'store'])->name('producten.store');
+
+    // Facturen
+    Route::get('/facturen', [FactuurController::class, 'generatePdf'])->name('facturen.index');
 });
 
 require __DIR__ . '/auth.php';
