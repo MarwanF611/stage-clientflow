@@ -11,7 +11,10 @@
                 <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
                     Dit is de factuur pagina.
 
-
+                    <a href="{{ route('facturen.generate') }}"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Nieuwe factuur
+                    </a>
                 </div>
             </div>
         </div>

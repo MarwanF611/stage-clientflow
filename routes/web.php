@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/offertes', [OffertesController::class, 'index'])->name('offertes.index');
 
     // Facturen
-    Route::get('/facturen', [FacturenController::class, 'generatePdf'])->name('facturen.index');
+    Route::get('/facturen/generate', [FacturenController::class, 'generatePdf'])->name('facturen.generate');
     Route::get('/facturen', [FacturenController::class, 'index'])->name('facturen.index');
 });
 
