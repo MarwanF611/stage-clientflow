@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('straatnaam');
             $table->string('huisnummer');
             $table->string('postcode');
-            $table->string('woonplaats');
             $table->string('land');
             $table->string('bedrijfsnaam');
             $table->string('btw_nummer');
