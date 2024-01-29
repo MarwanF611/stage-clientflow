@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
-class FactuurController extends Controller
+class FacturenController extends Controller
 {
+    public function index()
+    {
+        return view('facturen.index');
+    }
+
     public function generatePdf()
     {
         // $factuur = Factuur::find($id);

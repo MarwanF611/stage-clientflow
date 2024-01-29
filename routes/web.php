@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\FactuurController;
+use App\Http\Controllers\FacturenController;
+use App\Http\Controllers\OffertesController;
 use App\Http\Controllers\ProductenController;
 use App\Http\Controllers\KlantenController;
 use App\Http\Controllers\ProfileController;
@@ -38,8 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/producten/create', [ProductenController::class, 'create'])->name('producten.create');
     Route::post('/producten/create', [ProductenController::class, 'store'])->name('producten.store');
 
+    // Offertes
+    Route::get('/offertes', [OffertesController::class, 'index'])->name('offertes.index');
+
     // Facturen
-    Route::get('/facturen', [FactuurController::class, 'generatePdf'])->name('facturen.index');
+    Route::get('/facturen', [FacturenController::class, 'generatePdf'])->name('facturen.index');
+    Route::get('/facturen', [FacturenController::class, 'index'])->name('facturen.index');
 });
 
 require __DIR__ . '/auth.php';
