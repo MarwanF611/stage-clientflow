@@ -21,7 +21,7 @@ class ProductenController extends Controller
     {
         $request->validate([
             'naam'  => 'required',
-            'Type' => 'required',
+            'type' => 'required',
             'prijs' => 'required',
             'voorraad' => 'required',
 

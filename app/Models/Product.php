@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $fillable = [
         'naam',
-        'Type',
+        'type',
         'prijs',
         'voorraad',
     ];

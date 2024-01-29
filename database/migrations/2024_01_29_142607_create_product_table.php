@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('naam');
-            $table->string('Type');
+            $table->string('type');
             $table->string('prijs');
             $table->string('voorraad');
         });
