@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
 
     // Klanten
     Route::get('/klanten', [KlantenController::class, 'index'])->name('klanten.index');
+    Route::get('/klanten/create', [KlantenController::class, 'create'])->name('klanten.create');
 });
 
 require __DIR__ . '/auth.php';
