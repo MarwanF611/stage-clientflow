@@ -28,12 +28,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('offertes')">
+                    <x-nav-link :href="route('offertes.index')" :active="request()->routeIs('offertes.index')">
                         Offertes
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('facturen')">
+                    <x-nav-link :href="route('facturen.index')" :active="request()->routeIs('facturen.index')">
                         Facturen
                     </x-nav-link>
                 </div>
