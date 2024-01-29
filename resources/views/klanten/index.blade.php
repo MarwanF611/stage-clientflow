@@ -11,7 +11,7 @@
                 <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
                     Dit is de klanten pagina.
 
-                    <x-primary-link class="" href="/klanten/create">
+                    <x-primary-link href="/klanten/create">
                         Klant toevoegen
                     </x-primary-link>
                 </div>
