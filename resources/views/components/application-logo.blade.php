@@ -1,4 +1,6 @@
-<svg width="230" height="183.85" viewBox="0 0 316 253" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+@props(['width' => 230, 'height' => 183.85])
+
+<svg width="{{$width}}" height="${{$height}}" viewBox="0 0 316 253" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <path d="M316 0H0V252.6H316V0Z" fill="url(#pattern0)"/>
     <defs>
     <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
