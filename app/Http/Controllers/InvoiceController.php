@@ -93,4 +93,20 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.index')
             ->with('success', 'Invoice deleted successfully.');
     }
+
+    public function edit(
+        Request $request,
+    ) {
+        $invoice = Invoice::find($request->id);
+        $products = json_decode($invoice->products);
+
+        foreach ($products as $product) {
+            $product->details = Product::find($product->id);
+        }
+
+        return view('invoices.edit', [
+            'invoice' => $invoice,
+            'products' => $products,
+        ]);
+    }
 }

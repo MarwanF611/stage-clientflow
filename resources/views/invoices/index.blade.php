@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            invoices
+            Invoices
         </h2>
     </x-slot>
 
@@ -77,7 +77,10 @@
                                     {{ $invoice->expiration_date }}
                                 </td>
                                 <td class="px-6 py-4 flex items-center space-x-4">
-                                    <a href="#" class="font-medium text-gray-300 hover:underline">
+                                    <a href="{{ route('invoices.edit', [
+                                        'id' => $invoice->id,
+                                    ]) }}"
+                                        class="font-medium text-gray-300 hover:underline">
                                         @svg('heroicon-m-pencil-square', 'h-5 w-5')
                                     </a>
                                     <a href="{{ route('invoices.download', [
