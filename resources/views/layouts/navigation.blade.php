@@ -19,22 +19,22 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.index')">
-                        Klanten
+                        Customers
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
-                        Producten
+                        Products
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('quotes.index')" :active="request()->routeIs('offertes.index')">
-                        Offertes
+                        Quotes
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('invoices.index')" :active="request()->routeIs('invoices.index')">
-                        Facturen
+                        Invoices
                     </x-nav-link>
                 </div>
             </div>
