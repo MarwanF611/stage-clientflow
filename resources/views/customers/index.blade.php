@@ -11,7 +11,7 @@
                 <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
                     Dit is de klanten pagina.
 
-                    <x-primary-link href="/klanten/create">
+                    <x-primary-link href="/customers/create">
                         Klant toevoegen
                     </x-primary-link>
                 </div>
@@ -41,21 +41,21 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($klanten as $klant)
+                        @foreach ($customers as $customer)
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $klant->voornaam . ' ' . $klant->achternaam }}
+                                    {{ $customer->voornaam . ' ' . $customer->achternaam }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $klant->bedrijfsnaam }}
+                                    {{ $customer->bedrijfsnaam }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $klant->email }}
+                                    {{ $customer->email }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $klant->telefoonnummer }}
+                                    {{ $customer->telefoonnummer }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="#"
@@ -68,7 +68,7 @@
             </div>
 
             <div class="py-3">
-                {{ $klanten->links() }}
+                {{ $customers->links() }}
             </div>
         </div>
     </div>

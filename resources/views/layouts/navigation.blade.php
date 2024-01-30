@@ -18,22 +18,22 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('klanten.index')" :active="request()->routeIs('klanten.index')">
+                    <x-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.index')">
                         Klanten
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('producten.index')" :active="request()->routeIs('producten.index')">
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         Producten
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('offertes.index')" :active="request()->routeIs('offertes.index')">
+                    <x-nav-link :href="route('quotes.index')" :active="request()->routeIs('offertes.index')">
                         Offertes
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('facturen.index')" :active="request()->routeIs('facturen.index')">
+                    <x-nav-link :href="route('invoices.index')" :active="request()->routeIs('invoices.index')">
                         Facturen
                     </x-nav-link>
                 </div>

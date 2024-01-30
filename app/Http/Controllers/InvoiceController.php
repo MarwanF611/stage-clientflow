@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
-class FacturenController extends Controller
+class InvoiceController extends Controller
 {
     public function index()
     {
-        return view('facturen.index');
+        return view('invoices.index');
     }
 
     public function generatePdf()

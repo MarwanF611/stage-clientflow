@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\FacturenController;
-use App\Http\Controllers\OffertesController;
-use App\Http\Controllers\ProductenController;
-use App\Http\Controllers\KlantenController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,22 +29,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Klanten
-    Route::get('/klanten', [KlantenController::class, 'index'])->name('klanten.index');
-    Route::get('/klanten/create', [KlantenController::class, 'create'])->name('klanten.create');
-    Route::post('/klanten/store', [KlantenController::class, 'store'])->name('klanten.store');
+    // Customers
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+    Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
 
-    // Producten
-    Route::get('/producten', [ProductenController::class, 'index'])->name('producten.index');
-    Route::get('/producten/create', [ProductenController::class, 'create'])->name('producten.create');
-    Route::post('/producten/create', [ProductenController::class, 'store'])->name('producten.store');
+    // Products
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products/create', [ProductController::class, 'store'])->name('products.store');
 
-    // Offertes
-    Route::get('/offertes', [OffertesController::class, 'index'])->name('offertes.index');
+    // Quotes
+    Route::get('/quotes', [QuoteController::class, 'index'])->name('quotes.index');
 
-    // Facturen /
-    Route::get('/facturen/generate', [FacturenController::class, 'generatePdf'])->name('facturen.generate');
-    Route::get('/facturen', [FacturenController::class, 'index'])->name('facturen.index');
+    // Invoices
+    Route::get('/invoices/generate', [InvoiceController::class, 'generatePdf'])->name('invoices.generate');
+    Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
 });
 
 require __DIR__ . '/auth.php';
