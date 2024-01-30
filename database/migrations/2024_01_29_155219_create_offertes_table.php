@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quotes', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->date('expiration_date');
             $table->enum('payment_method', ['cash', 'bank', 'card', 'credit_card']);

@@ -45,8 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/quotes/store', [QuoteController::class, 'store'])->name('quotes.store');
 
     // Invoices
-    Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
     Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+    Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
+    Route::post('/invoices/store', [InvoiceController::class, 'store'])->name('invoices.store');
 });
 
 require __DIR__ . '/auth.php';
