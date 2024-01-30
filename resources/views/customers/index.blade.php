@@ -46,16 +46,16 @@
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $customer->voornaam . ' ' . $customer->achternaam }}
+                                    {{ $customer->first_name . ' ' . $customer->last_name }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $customer->bedrijfsnaam }}
+                                    {{ $customer->company_name }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $customer->email }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $customer->telefoonnummer }}
+                                    {{ $customer->phone_number }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="#"
