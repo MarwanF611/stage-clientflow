@@ -76,13 +76,15 @@
                                 <td class="px-6 py-4">
                                     {{ $invoice->expiration_date }}
                                 </td>
-                                <td class="px-6 py-4 text-right">
+                                <td class="px-6 py-4 flex items-center space-x-4">
                                     <a href="#"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     <a href="{{ route('invoices.download', [
                                         'id' => $invoice->id,
                                     ]) }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Download</a>
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                        @svg('heroicon-s-cloud-arrow-down', 'h-5 w-5')
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
