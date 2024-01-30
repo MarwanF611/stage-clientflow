@@ -83,4 +83,14 @@ class InvoiceController extends Controller
             'invoice_R' . random_int(1000, 9999) . '.pdf'
         );
     }
+
+    public function delete(
+        Request $request,
+    ) {
+        $invoice = Invoice::find($request->id);
+        $invoice->delete();
+
+        return redirect()->route('invoices.index')
+            ->with('success', 'Invoice deleted successfully.');
+    }
 }

@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
     Route::post('/invoices/store', [InvoiceController::class, 'store'])->name('invoices.store');
     Route::get('/invoices/download', [InvoiceController::class, 'download'])->name('invoices.download');
+    Route::get('/invoices/delete', [InvoiceController::class, 'delete'])->name('invoices.delete');
 });
 
 require __DIR__ . '/auth.php';
