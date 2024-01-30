@@ -166,7 +166,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="w-full">
+                                <div class="w-full ">
                                     <label for="product_aantal"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Aantal
@@ -174,16 +174,15 @@
                                     <input type="text" name="product_aantal" id="product_aantal"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
-
                                     @error('product_aantal')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
                                         </div>
                                     @enderror
+
+
                                 </div>
-
                                 <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">
-
                                 </div>
                             </div>
 
@@ -243,6 +242,7 @@
                                                 {{ $message }}
                                             </div>
                                         @enderror
+                                        
                                     </div>
         
         `;
