@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Producten
+            invoiceen
         </h2>
     </x-slot>
 
@@ -16,6 +16,65 @@
                         Nieuwe factuur
                     </a>
                 </div>
+            </div>
+
+
+
+            <div class="relative mt-3 overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                ID
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Customer
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Status
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Expiry date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($invoices as $invoice)
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center space-x-2">
+                                    <p>
+                                        {{ $invoice->id }}
+                                    </p>
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $invoice->customer->first_name }} {{ $invoice->customer->last_name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="bg-yellow-100 text-yellow-800 uppercase text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
+                                        {{ $invoice->status }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $invoice->expiration_date }}
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="py-3">
+                {{ $invoices->links() }}
             </div>
         </div>
     </div>

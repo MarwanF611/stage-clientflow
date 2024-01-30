@@ -13,7 +13,7 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Algemene informatie
                         </h2>
-                        <form action={{ route('customers.store') }} method="POST">
+                        <form action={{ route('invoices.store') }} method="POST">
                             @csrf
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
@@ -66,6 +66,77 @@
                                     @enderror
                                 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div>
+                                    <label for="expiration_date"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        Expiration date
+                                    </label>
+
+
+                                    <div class="relative max-w-sm">
+                                        <div
+                                            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                            </svg>
+                                        </div>
+                                        <input datepicker datepicker-autohide type="text" name="expiration_date"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Select date">
+                                    </div>
+
+                                    @error('expiration_date')
+                                        <div class="text-red-500 mt-2 text-sm">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label for="status"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                    <select id="status" name="status"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option value="open">Open</option>
+                                        <option value="expired">Expired</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+
+                                    @error('land')
+                                        <div class="text-red-500 mt-2 text-sm">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 <div class="border-t w-full col-span-2 border-gray-600"></div>
 
                                 <div class="w-full">
@@ -84,11 +155,11 @@
                                     @enderror
                                 </div>
                                 <div class="w-full">
-                                    <label for="product_aantal_0"
+                                    <label for="product_amount_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Aantal
                                     </label>
-                                    <input type="text" name="product_aantal_0" id="product_aantal_0"
+                                    <input type="text" name="product_amount_0" id="product_amount_0"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
 
@@ -97,8 +168,6 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-
-
                                 </div>
                                 <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">
                                 </div>
@@ -147,15 +216,15 @@
                                         @enderror
                                     </div>
                                     <div>
-                                        <label for="product_aantal_${productCount}"
+                                        <label for="product_amount_${productCount}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Aantal
                                         </label>
-                                        <input type="text" name="product_aantal_${productCount}" id="product_aantal_${productCount}"
+                                        <input type="text" name="product_amount_${productCount}" id="product_amount_${productCount}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             placeholder="000" required>
 
-                                        @error('product_aantal_${productCount}')
+                                        @error('product_amount_${productCount}')
                                             <div class="text-red-500 mt-2 text-sm">
                                                 {{ $message }}
                                             </div>
@@ -165,3 +234,5 @@
         `;
     }
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/datepicker.min.js"></script>

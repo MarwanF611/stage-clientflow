@@ -28,7 +28,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('quotes.index')" :active="request()->routeIs('offertes.index')">
+                    <x-nav-link :href="route('quotes.index')" :active="request()->routeIs('quotes.index')">
                         Quotes
                     </x-nav-link>
                 </div>

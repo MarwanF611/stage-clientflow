@@ -48,7 +48,7 @@
                                     <img src={{ Storage::url('images/' . $product->image) }} alt="{{ $product->name }}"
                                         width="64" heigh="64" class="w-8 h-8 rounded-full object-cover">
                                     <p>
-                                        {{ $product->name }}
+                                        {{ $product->name }} #{{ $product->id }}
                                     </p>
                                 </th>
                                 <td class="px-6 py-4">
