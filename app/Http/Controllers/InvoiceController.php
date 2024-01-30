@@ -70,22 +70,6 @@ class InvoiceController extends Controller
         $invoice = Invoice::find($request->id);
         $products = json_decode($invoice->products);
 
-        /*
-            The $products variable now contains an array of objects
-            [
-                {
-                    "id": 1,
-                    "amount": 2
-                },
-                {
-                    "id": 2,
-                    "amount": 1
-                }
-            ]
-
-            Add a details property, fetch details from db
-        */
-
         foreach ($products as $product) {
             $product->details = Product::find($product->id);
         }
