@@ -36,7 +36,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Voornaam
                                     </label>
-                                    <input type="text" name="voornaam" id="voornaam"
+                                    <input type="text" name="first_name" id="voornaam"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Jan" required>
 
@@ -51,7 +51,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Achternaam
                                     </label>
-                                    <input type="text" name="achternaam" id="achternaam"
+                                    <input type="text" name="last_name" id="achternaam"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Janssen" required>
 
@@ -64,7 +64,7 @@
                                 <div>
                                     <label for="land"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Land</label>
-                                    <select id="land" name="land"
+                                    <select id="land" name="country"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="Nederland">Nederland</option>
                                         <option value="België">België</option>
@@ -87,7 +87,7 @@
                                         Telefoonnummer
                                     </label>
 
-                                    <input type="text" name="telefoonnummer" id="telefoonnummer"
+                                    <input type="text" name="phone_number" id="telefoonnummer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="0612345678" required>
 
@@ -104,7 +104,7 @@
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Straatnaam
                                         </label>
-                                        <input type="text" name="straatnaam" id="straatnaam"
+                                        <input type="text" name="street_name" id="straatnaam"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -119,7 +119,7 @@
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Huisnummer
                                         </label>
-                                        <input type="text" name="huisnummer" id="huisnummer"
+                                        <input type="text" name="house_number" id="huisnummer"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -156,7 +156,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Bedrijfsnaam
                                     </label>
-                                    <input type="text" name="bedrijfsnaam" id="bedrijfsnaam"
+                                    <input type="text" name="company_name" id="bedrijfsnaam"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Gold snack NV" required>
 
@@ -171,7 +171,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         BTW-nummer
                                     </label>
-                                    <input type="text" name="btw_nummer" id="btw_nummer"
+                                    <input type="text" name="vat_number" id="btw_nummer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
 

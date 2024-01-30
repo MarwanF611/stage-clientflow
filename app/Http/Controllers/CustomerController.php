@@ -26,25 +26,25 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'voornaam' => 'required',
-            'achternaam' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required',
-            'telefoonnummer' => 'required',
-            'straatnaam' => 'required',
-            'huisnummer' => 'required',
+            'phone_number' => 'required',
+            'street_name' => 'required',
+            'house_number' => 'required',
             'postcode' => 'required',
-            'land' => 'required',
-            'bedrijfsnaam' => 'required',
-            'btw_nummer' => 'required',
+            'country' => 'required',
+            'company_name' => 'required',
+            'vat_number' => 'required',
             'iban' => 'required',
         ]);
 
         try {
             $klant = new Klant();
-            $klant->voornaam = $request->voornaam;
-            $klant->achternaam = $request->achternaam;
+            $klant->first_name = $request->voornaam;
+            $klant->last_name = $request->achternaam;
             $klant->email = $request->email;
-            $klant->telefoonnummer = $request->telefoonnummer;
+            $klant->phone_number = $request->telefoonnummer;
             $klant->straatnaam = $request->straatnaam;
             $klant->huisnummer = $request->huisnummer;
             $klant->postcode = $request->postcode;
