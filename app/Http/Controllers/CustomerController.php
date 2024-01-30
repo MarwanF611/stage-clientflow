@@ -5,22 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Klant;
 use Illuminate\Http\Request;
 
-class KlantenController extends Controller
+class CustomerController extends Controller
 {
     public function index()
     {
-        $klanten = Klant::simplePaginate(20);
+        $customers = Klant::simplePaginate(20);
 
-        $klanten->withPath('klanten');
+        $customers->withPath('klanten');
 
-        return view('klanten.index', [
-            'klanten' => $klanten,
+        return view('customers.index', [
+            'customers' => $customers,
         ]);
     }
 
     public function create()
     {
-        return view('klanten.create');
+        return view('customers.create');
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class KlantenController extends Controller
             dd($e);
         }
 
-        return redirect()->route('klanten.index')
+        return redirect()->route('customers.index')
             ->with('success', 'Klant is succesvol aangemaakt.');
     }
 }
