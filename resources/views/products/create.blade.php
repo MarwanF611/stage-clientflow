@@ -17,11 +17,11 @@
                             @csrf
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
-                                    <label for="text"
+                                    <label for="name"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Naam
+                                        Name
                                     </label>
-                                    <input type="text" name="name" id="naam"
+                                    <input type="text" name="name" id="name"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Naam van het product" required>
                                 </div>
@@ -40,28 +40,28 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="prijs"
+                                    <label for="price"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Prijs
                                     </label>
 
-                                    <input type="text" name="price" id="prijs"
+                                    <input type="text" name="price" id="price"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="€100.00" required>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="voorraad"
+                                    <label for="stock"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Voorraad
                                     </label>
 
-                                    <input type="text" name="stock" id="voorraad"
+                                    <input type="text" name="stock" id="stock"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="100" required>
                                 </div>
 
 
-                                <label for="prijs"
+                                <label for="image"
                                     class="block mb-0 text-sm font-medium text-gray-900 dark:text-white">
                                     Afbeelding
                                 </label>
@@ -78,15 +78,15 @@
                                                     stroke-linejoin="round" stroke-width="2"
                                                     d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                             </svg>
-                                            <div id="file-name">
+                                            <div id="image">
                                                 <p><span class="font-semibold">Click to upload</span>
                                                     or drag and drop</p>
                                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
                                                     (MAX. 800x400px)</p>
                                             </div>
                                             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span </div>
-                                                    <input id="dropzone-file" type="file" class="hidden"
-                                                        name="image" onchange="displayFileName(this)" />
+                                                    <input id="image" type="file" class="hidden" name="image"
+                                                        onchange="displayFileName(this)" />
                                     </label>
                                 </div>
 
@@ -100,7 +100,7 @@
 
                             </div>
                             <button type="submit"
-                                class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                class=" w-fit inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                                 Product toevoegen @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
                             </button>
                         </form>
