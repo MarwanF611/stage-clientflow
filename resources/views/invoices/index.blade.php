@@ -55,10 +55,23 @@
                                     {{ $invoice->customer->first_name }} {{ $invoice->customer->last_name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <span
-                                        class="bg-yellow-100 text-yellow-800 uppercase text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
-                                        {{ $invoice->status }}
-                                    </span>
+                                    @if ($invoice->status == 'completed')
+                                        <span
+                                            class="bg-green-100 text-green-800 uppercase text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                                            {{ $invoice->status }}
+                                        </span>
+                                    @elseif($invoice->status == 'expired')
+                                        <span
+                                            class="bg-red-100 text-red-800 uppercase text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                                            {{ $invoice->status }}
+                                        </span>
+                                    @elseif($invoice->status == 'open')
+                                        <span
+                                            class="bg-yellow-100 text-yellow-800 uppercase text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
+                                            {{ $invoice->status }}
+                                        </span>
+                                    @endif
+
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $invoice->expiration_date }}
