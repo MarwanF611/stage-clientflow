@@ -17,15 +17,15 @@
                             @csrf
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
-                                    <label for="email"
+                                    <label for="customer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Email
+                                        Customer
                                     </label>
-                                    <input type="email" name="email" id="email"
+                                    <input type="text" name="customer" id="customer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Email van de klant" required>
+                                        placeholder="Customer ID" required>
 
-                                    @error('email')
+                                    @error('customer')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
                                         </div>
@@ -152,55 +152,52 @@
 
 
                                 <div class="w-full">
-                                    <label for="bedrijfsnaam"
+                                    <label for="product_id"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Bedrijfsnaam
+                                        Product ID
                                     </label>
-                                    <input type="text" name="company_name" id="bedrijfsnaam"
+                                    <input type="text" name="product_id" id="product_id"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Gold snack NV" required>
+                                        placeholder="XXXXX" required>
 
-                                    @error('bedrijfsnaam')
+                                    @error('product_id')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="w-full">
-                                    <label for="btw_nummer"
+                                    <label for="product_aantal"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        BTW-nummer
+                                        Aantal
                                     </label>
-                                    <input type="text" name="vat_number" id="btw_nummer"
+                                    <input type="text" name="product_aantal" id="product_aantal"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
 
-                                    @error('btw_nummer')
+                                    @error('product_aantal')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="sm:col-span-2">
-                                    <label for="iban"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        IBAN
-                                    </label>
-                                    <textarea type="text" name="iban" id="iban" rows="3"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="BE" required></textarea>
 
-                                    @error('iban')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">
+
                                 </div>
                             </div>
-                            <button type="submit"
-                                class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                Klant toevoegen @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
-                            </button>
+
+                            <div class="flex flex-col">
+                                <button type="button" onclick="addProduct()"
+                                    class="inline-flex items-center px-5 w-fit py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-600 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-500">
+                                    Product toevoegen @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
+                                </button>
+
+                                <button type="submit"
+                                    class="inline-flex w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    Maak factuur @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -208,3 +205,48 @@
         </div>
     </div>
 </x-app-layout>
+
+
+<script>
+    let productCount = 0;
+
+    function addProduct() {
+        productCount++;
+        document.getElementById("products-parent").innerHTML += `
+        
+        <div>
+                                        <label for="product_id_${productCount}"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                            Product ID
+                                        </label>
+                                        <input type="text" name="product_id" id="product_id"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="XXXX" required>
+
+                                        @error('product_id')
+                                            <div class="text-red-500 mt-2 text-sm">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div>
+                                        <label for="product_aantal"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                            Aantal
+                                        </label>
+                                        <input type="text" name="product_aantal" id="product_aantal"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="000" required>
+
+                                        @error('product_aantal')
+                                            <div class="text-red-500 mt-2 text-sm">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+        
+        `;
+
+        console.log("test");
+    }
+</script>
