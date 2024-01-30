@@ -17,21 +17,8 @@ return new class extends Migration
             $table->enum('betalings_methode', ['contant', 'bank', 'pin', 'creditcard']);
             $table->enum('status', ['open', 'verlopen', 'afgerond']);
             $table->json('producten');
-            /*
-            [
-                {
-                    "id": 1,
-                    "aantal": 2
-                },
-                {
-                    "id": 2,
-                    "aantal": 1
-                }
-            ]
-            */
             $table->foreignId('klant_id')->constrained();
             $table->timestamps();
-
 
             $table->index('klant_id');
             $table->foreign('klant_id')

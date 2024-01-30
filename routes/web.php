@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     // Offertes
     Route::get('/offertes', [OffertesController::class, 'index'])->name('offertes.index');
 
-    // Facturen
+    // Facturen /
     Route::get('/facturen/generate', [FacturenController::class, 'generatePdf'])->name('facturen.generate');
     Route::get('/facturen', [FacturenController::class, 'index'])->name('facturen.index');
 });
