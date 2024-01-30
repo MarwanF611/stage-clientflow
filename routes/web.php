@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
 
     // Quotes
     Route::get('/quotes', [QuoteController::class, 'index'])->name('quotes.index');
+    Route::get('/quotes/create', [QuoteController::class, 'create'])->name('quotes.create');
+    Route::post('/quotes/store', [QuoteController::class, 'store'])->name('quotes.store');
 
     // Invoices
     Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
