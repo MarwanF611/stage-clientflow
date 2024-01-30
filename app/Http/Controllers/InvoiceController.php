@@ -63,13 +63,16 @@ class InvoiceController extends Controller
             ->with('success', 'Invoice created successfully.');
     }
 
-    public function generatePdf(
-        Request $request
+    public function download(
+        Request $request,
     ) {
-        // $factuur = Factuur::find($id);
-        dd($request->all());
+        $invoice = Invoice::find($request->id);
+        $products = json_decode($invoice->products);
 
-        $pdf = Pdf::loadView('pdf.factuur', []);
+        $pdf = Pdf::loadView('pdf.invoice', [
+            'invoice' => $invoice,
+            'products' => $products,
+        ]);
         return $pdf->download(
             'invoice_R' . random_int(1000, 9999) . '.pdf'
         );

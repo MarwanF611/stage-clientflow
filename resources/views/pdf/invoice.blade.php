@@ -108,7 +108,8 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="/logo_clientflow_transparent.png" style="width: 100%; max-width: 300px" />
+                                <img src="https://raw.githubusercontent.com/MarwanF611/stage_clientflow/main/public/logo_clientflow_transparent.png"
+                                    style="width: 100%; max-width: 300px" />
                             </td>
 
                             <td>
@@ -144,11 +145,13 @@
             <tr class="heading">
                 <td>Payment Method</td>
 
-                <td>Check #</td>
+                <td>
+                    Check #
+                </td>
             </tr>
 
             <tr class="details">
-                <td>Check</td>
+                <td>{{ ucfirst($invoice->payment_method) }}</td>
 
                 <td>1000</td>
             </tr>
@@ -159,17 +162,13 @@
                 <td>Price</td>
             </tr>
 
-            <tr class="item">
-                <td>Website design</td>
+            @foreach ($products as $product)
+                <tr class="item">
+                    <td>{{ $product->id }}</td>
 
-                <td>$300.00</td>
-            </tr>
-
-            <tr class="item">
-                <td>Hosting (3 months)</td>
-
-                <td>$75.00</td>
-            </tr>
+                    <td>{{ $product->amount }}</td>
+                </tr>
+            @endforeach
 
             <tr class="item last">
                 <td>Domain name (1 year)</td>
