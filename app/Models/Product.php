@@ -12,9 +12,10 @@ class Product extends Model
     protected $table = 'producten';
 
     protected $fillable = [
-        'naam',
+        'name',
         'type',
-        'prijs',
-        'voorraad',
+        'price',
+        'stock',
+        'image'
     ];
 }
