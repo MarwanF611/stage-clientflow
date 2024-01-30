@@ -1,9 +1,15 @@
+@php
+    use Carbon\Carbon;
+@endphp
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>
+        Invoice {{ $invoice->id }}
+    </title>
 
     <style>
         .invoice-box {
@@ -114,7 +120,7 @@
 
                             <td>
                                 Invoice #: {{ $invoice->id }}<br />
-                                Created: January 1, 2023<br />
+                                Created: {{ Carbon::now()->format('F d, Y') }}<br />
                                 Due: {{ $invoice->expiration_date }}
                             </td>
                         </tr>
@@ -163,18 +169,14 @@
             </tr>
 
             @foreach ($products as $product)
-                <tr class="item">
-                    <td>{{ $product->id }}</td>
+                <tr class="item {{ $loop->last ? 'last' : '' }}">
+                    <td>{{ $product->details->name }}</td>
 
                     <td>{{ $product->amount }}</td>
                 </tr>
             @endforeach
 
-            <tr class="item last">
-                <td>Domain name (1 year)</td>
 
-                <td>$10.00</td>
-            </tr>
 
             <tr class="total">
                 <td></td>
