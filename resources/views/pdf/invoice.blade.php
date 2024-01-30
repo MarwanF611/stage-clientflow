@@ -115,7 +115,7 @@
                         <tr>
                             <td class="title">
                                 <img src="https://raw.githubusercontent.com/MarwanF611/stage_clientflow/main/public/logo_clientflow_transparent.png"
-                                    style="width: 100%; max-width: 300px" />
+                                    style="width: 100%; max-width: 200px" />
                             </td>
 
                             <td>
@@ -140,8 +140,10 @@
 
                             <td>
                                 {{ $invoice->customer->company_name }}.<br />
-                                {{ $invoice->customer->last_name }} {{ $invoice->customer->first_name }}<br />
-                                {{ $invoice->customer->email }}
+                                {{ $invoice->customer->street_name }} {{ $invoice->customer->house_number }},
+                                {{ $invoice->customer->postcode }}<br />
+                                {{ $invoice->customer->phone_number }}<br />
+
                             </td>
                         </tr>
                     </table>

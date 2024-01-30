@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Nieuw factuur aanmaken
+            Make new invoice
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-                            Algemene informatie
+                            Invoice information
                         </h2>
                         <form action={{ route('invoices.store') }} method="POST">
                             @csrf
@@ -65,21 +65,6 @@
                                         </div>
                                     @enderror
                                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 <div>
                                     <label for="expiration_date"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
