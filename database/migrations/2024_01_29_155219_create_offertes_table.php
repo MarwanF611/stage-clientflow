@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offertes', function (Blueprint $table) {
+        Schema::create('quotations', function (Blueprint $table) {
             $table->id();
-            $table->date('vervaldatum');
-            $table->enum('betalings_methode', ['contant', 'bank', 'pin', 'creditcard']);
-            $table->enum('status', ['open', 'verlopen', 'afgerond']);
-            $table->json('producten');
-            $table->foreignId('klant_id')->constrained();
+            $table->date('expiration_date');
+            $table->enum('payment_method', ['cash', 'bank', 'card', 'credit_card']);
+            $table->enum('status', ['open', 'expired', 'completed']);
+            $table->json('products');
+            $table->foreignId('customer_id')->constrained('customers');
             $table->timestamps();
 
-            $table->index('klant_id');
-            $table->foreign('klant_id')
+            $table->index('customer_id');
+            $table->foreign('customer_id')
                 ->references('id')
-                ->on('klanten')
+                ->on('customers')
                 ->onDelete('cascade');
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('offertes');
+        Schema::dropIfExists('quotations');
     }
 };

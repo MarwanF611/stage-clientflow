@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('klanten', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('voornaam');
-            $table->string('achternaam');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
-            $table->string('telefoonnummer')->unique();
-            $table->string('straatnaam');
-            $table->string('huisnummer');
+            $table->string('phone_number')->unique();
+            $table->string('street_name');
+            $table->string('house_number');
             $table->string('postcode');
-            $table->string('land');
-            $table->string('bedrijfsnaam');
-            $table->string('btw_nummer');
+            $table->string('country');
+            $table->string('company_name');
+            $table->string('vat_number');
             $table->string('iban');
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('klanten');
+        Schema::dropIfExists('customers');
     }
 };
