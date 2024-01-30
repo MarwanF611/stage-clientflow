@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quotations', function (Blueprint $table) {
+        Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->date('expiration_date');
             $table->enum('payment_method', ['cash', 'bank', 'card', 'credit_card']);
             $table->enum('status', ['open', 'expired', 'completed']);
             $table->json('products');
-            $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('customer_id');
             $table->timestamps();
 
             $table->index('customer_id');
