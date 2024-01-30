@@ -94,7 +94,7 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/apexcharts">
+<script>
     // ApexCharts options and config
     window.addEventListener("load", function() {
         var options = {
@@ -196,5 +196,3 @@
         }
     });
 </script>
-
-</div>
