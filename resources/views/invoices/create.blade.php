@@ -31,48 +31,16 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="w-full">
-                                    <label for="voornaam"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Voornaam
-                                    </label>
-                                    <input type="text" name="first_name" id="voornaam"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Jan" required>
 
-                                    @error('voornaam')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="w-full">
-                                    <label for="achternaam"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Achternaam
-                                    </label>
-                                    <input type="text" name="last_name" id="achternaam"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Janssen" required>
-
-                                    @error('achternaam')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
                                 <div>
-                                    <label for="land"
+                                    <label for="payment_method"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Land</label>
-                                    <select id="land" name="country"
+                                    <select id="payment_method" name="payment_method"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="Nederland">Nederland</option>
-                                        <option value="België">België</option>
-                                        <option value="Duitsland">Duitsland</option>
-                                        <option value="Verenigd Koninkrijk">
-                                            Verenigd Koninkrijk
-                                        </option>
-                                        <option value="India">India</option>
+                                        <option value="cash">Cash</option>
+                                        <option value="bank">Bank</option>
+                                        <option value="card">Card</option>
+                                        <option value="credit_card">Credit card</option>
                                     </select>
 
                                     @error('land')
@@ -98,82 +66,32 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-span-2 grid grid-cols-3 gap-4 sm:gap-6">
-                                    <div>
-                                        <label for="straatnaam"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Straatnaam
-                                        </label>
-                                        <input type="text" name="street_name" id="straatnaam"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            required>
-
-                                        @error('straatnaam')
-                                            <div class="text-red-500 mt-2 text-sm">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div>
-                                        <label for="huisnummer"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Huisnummer
-                                        </label>
-                                        <input type="text" name="house_number" id="huisnummer"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            required>
-
-                                        @error('huisnummer')
-                                            <div class="text-red-500 mt-2 text-sm">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-
-                                    <div>
-                                        <label for="postcode"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Postcode
-                                        </label>
-                                        <input type="text" name="postcode" id="postcode"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            required>
-
-                                        @error('postcode')
-                                            <div class="text-red-500 mt-2 text-sm">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
                                 <div class="border-t w-full col-span-2 border-gray-600"></div>
 
-
                                 <div class="w-full">
-                                    <label for="product_id"
+                                    <label for="product_id_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Product ID
                                     </label>
-                                    <input type="text" name="product_id" id="product_id"
+                                    <input type="text" name="product_id_0" id="product_id_0"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="XXXXX" required>
 
-                                    @error('product_id')
+                                    @error('product_id_0')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="w-full ">
-                                    <label for="product_aantal"
+                                <div class="w-full">
+                                    <label for="product_aantal_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Aantal
                                     </label>
-                                    <input type="text" name="product_aantal" id="product_aantal"
+                                    <input type="text" name="product_aantal_0" id="product_aantal_0"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
+
                                     @error('product_aantal')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
@@ -218,35 +136,32 @@
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Product ID
                                         </label>
-                                        <input type="text" name="product_id" id="product_id"
+                                        <input type="text" name="product_id_${productCount}" id="product_id_${productCount}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             placeholder="XXXX" required>
 
-                                        @error('product_id')
+                                        @error('product_id_${productCount}')
                                             <div class="text-red-500 mt-2 text-sm">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
                                     <div>
-                                        <label for="product_aantal"
+                                        <label for="product_aantal_${productCount}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Aantal
                                         </label>
-                                        <input type="text" name="product_aantal" id="product_aantal"
+                                        <input type="text" name="product_aantal_${productCount}" id="product_aantal_${productCount}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             placeholder="000" required>
 
-                                        @error('product_aantal')
+                                        @error('product_aantal_${productCount}')
                                             <div class="text-red-500 mt-2 text-sm">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                         
                                     </div>
-        
         `;
-
-        console.log("test");
     }
 </script>
