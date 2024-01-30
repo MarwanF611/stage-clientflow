@@ -11,7 +11,7 @@
                 <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
                     Dit is de producten pagina.
 
-                    <x-primary-link href="/producten/create">
+                    <x-primary-link route_name="producten.create">
                         product toevoegen
                     </x-primary-link>
                 </div>

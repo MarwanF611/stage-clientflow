@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     // Producten
     Route::get('/producten', [ProductenController::class, 'index'])->name('producten.index');
     Route::get('/producten/create', [ProductenController::class, 'create'])->name('producten.create');
-    Route::post('/producten/create', [ProductenController::class, 'store'])->name('producten.store');
+    Route::post('/producten/store', [ProductenController::class, 'store'])->name('producten.store');
 
     // Offertes
     Route::get('/offertes', [OffertesController::class, 'index'])->name('offertes.index');
