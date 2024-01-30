@@ -113,9 +113,9 @@
                             </td>
 
                             <td>
-                                Invoice #: 123<br />
+                                Invoice #: {{ $invoice->id }}<br />
                                 Created: January 1, 2023<br />
-                                Due: February 1, 2023
+                                Due: {{ $invoice->expiration_date }}
                             </td>
                         </tr>
                     </table>
@@ -133,9 +133,9 @@
                             </td>
 
                             <td>
-                                Acme Corp.<br />
-                                John Doe<br />
-                                john@example.com
+                                {{ $invoice->customer->company_name }}.<br />
+                                {{ $invoice->customer->last_name }} {{ $invoice->customer->first_name }}<br />
+                                {{ $invoice->customer->email }}
                             </td>
                         </tr>
                     </table>

@@ -23,16 +23,16 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Naam klant
+                                Name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Bedrijf
+                                Company
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Email
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                telefoonnummer
+                                Phone number
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 <span class="sr-only">Edit</span>
