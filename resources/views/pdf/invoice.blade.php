@@ -170,9 +170,9 @@
 
             @foreach ($products as $product)
                 <tr class="item {{ $loop->last ? 'last' : '' }}">
-                    <td>{{ $product->details->name }}</td>
+                    <td>{{ $product->details->name }} x{{ $product->amount }}</td>
 
-                    <td>{{ $product->amount }}</td>
+                    <td>{{ $product->details->price * $product->amount }} EUR</td>
                 </tr>
             @endforeach
 
@@ -181,7 +181,16 @@
             <tr class="total">
                 <td></td>
 
-                <td>Total: $385.00</td>
+                <td>
+                    Total:
+                    @php
+                        $total = 0;
+                        foreach ($products as $product) {
+                            $total += $product->details->price * $product->amount;
+                        }
+                        echo '€' . $total . ',-';
+                    @endphp
+                </td>
             </tr>
         </table>
     </div>
