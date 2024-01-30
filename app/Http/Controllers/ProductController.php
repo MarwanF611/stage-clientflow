@@ -26,13 +26,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'naam'  => 'required',
+            'name'  => 'required',
             'type' => 'required',
-            'prijs' => 'required',
-            'voorraad' => 'required',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'image' => 'required',
         ]);
 
-        Product::create($request->all());
+        dd($request->all());
 
         return redirect()->route('product.index')
             ->with('success', 'product is succesvol aangemaakt.');
