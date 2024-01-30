@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Producten
+            Products
         </h2>
     </x-slot>
 
@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
-                    Dit is de producten pagina.
+                    This is the products page.
 
                     <x-primary-link route_name="products.create">
-                        product toevoegen
+                        Add new product
                     </x-primary-link>
                 </div>
             </div>
