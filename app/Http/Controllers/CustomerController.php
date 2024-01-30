@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Klant;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Klant::simplePaginate(20);
+        $customers = Customer::simplePaginate(20);
 
-        $customers->withPath('klanten');
+        $customers->withPath('customers');
 
         return view('customers.index', [
             'customers' => $customers,
@@ -40,7 +40,7 @@ class CustomerController extends Controller
         ]);
 
         try {
-            $klant = new Klant();
+            $klant = new Customer();
             $klant->first_name = $request->first_name;
             $klant->last_name = $request->last_name;
             $klant->email = $request->email;

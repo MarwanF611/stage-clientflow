@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/quotes', [QuoteController::class, 'index'])->name('quotes.index');
 
     // Invoices
-    Route::get('/invoices/generate', [InvoiceController::class, 'generatePdf'])->name('invoices.generate');
+    Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
     Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
 });
 

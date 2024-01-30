@@ -12,6 +12,11 @@ class InvoiceController extends Controller
         return view('invoices.index');
     }
 
+    public function create()
+    {
+        return view('invoices.create');
+    }
+
     public function generatePdf()
     {
         // $factuur = Factuur::find($id);
