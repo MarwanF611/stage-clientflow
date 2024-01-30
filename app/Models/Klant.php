@@ -9,20 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 class Klant extends Model
 {
     use HasFactory;
-    protected $table = 'klanten';
+    protected $table = 'customers';
 
     protected $fillable = [
-        'voornaam',
-        'achternaam',
+        'first_name',
+        'last_name',
         'email',
-        'telefoonnummer',
-        'straatnaam',
-        'huisnummer',
+        'phone_number',
+        'street_name',
+        'house_number',
         'postcode',
-        'woonplaats',
-        'land',
-        'bedrijfsnaam',
-        'btw_nummer',
+        'country',
+        'company_name',
+        'vat_number',
         'iban',
     ];
 }
