@@ -55,7 +55,7 @@
                                     {{ $product->type }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $product->price }}
+                                    € {{ $product->price }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $product->stock }}
