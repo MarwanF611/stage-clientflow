@@ -40,7 +40,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach ($products as $product)
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -51,7 +50,6 @@
                                     <p>
                                         {{ $product->name }}
                                     </p>
-
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $product->type }}

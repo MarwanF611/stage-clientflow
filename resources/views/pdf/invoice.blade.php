@@ -108,8 +108,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png"
-                                    style="width: 100%; max-width: 300px" />
+                                <img src="/logo_clientflow_transparent.png" style="width: 100%; max-width: 300px" />
                             </td>
 
                             <td>
