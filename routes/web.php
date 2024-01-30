@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     // Klanten
     Route::get('/klanten', [KlantenController::class, 'index'])->name('klanten.index');
     Route::get('/klanten/create', [KlantenController::class, 'create'])->name('klanten.create');
-    Route::post('/klanten/create', [KlantenController::class, 'store'])->name('klanten.store');
+    Route::post('/klanten/store', [KlantenController::class, 'store'])->name('klanten.store');
 
     // Producten
     Route::get('/producten', [ProductenController::class, 'index'])->name('producten.index');
