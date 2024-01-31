@@ -44,7 +44,7 @@
                                         <option value="desktop">Desktop</option>
                                         <option value="telefoon">Telefoon</option>
                                         <option value="tablet">Tablet</option>
-                                        <option value="accessoire">Accessoire</option>
+                                        <option value="accessoidre">Accessoire</option>
                                     </select>
 
                                     @error('type')

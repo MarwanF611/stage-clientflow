@@ -142,7 +142,7 @@
                                 {{ $invoice->customer->company_name }}.<br />
                                 {{ $invoice->customer->street_name }} {{ $invoice->customer->house_number }},
                                 {{ $invoice->customer->postcode }}<br />
-                                {{ $invoice->customer->phone_number }}<br />
+                                Tel. {{ $invoice->customer->phone_number }}<br />
 
                             </td>
                         </tr>
