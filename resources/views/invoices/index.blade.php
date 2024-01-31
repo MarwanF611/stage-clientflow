@@ -3,7 +3,7 @@
         <h2
             class=" flex display-flex justify-between font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Invoices
-            <x-primary-link route_name="products.create">
+            <x-primary-link route_name="invoices.create">
                 Add new invoice
             </x-primary-link>
         </h2>

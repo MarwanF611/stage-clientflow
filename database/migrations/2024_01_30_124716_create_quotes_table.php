@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id');
-
+            
             $table->json('products');
             $table->timestamps();
 

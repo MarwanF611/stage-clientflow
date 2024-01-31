@@ -83,6 +83,7 @@ class ProductController extends Controller
             'type' => 'required',
             'price' => 'required|numeric|min:0|max:9999',
             'stock' => 'required|integer|min:0',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
@@ -105,7 +106,9 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->stock = $request->input('stock');
 
-        $product->image = $new_filename;
+        if ($request->hasFile('image')) {
+            $product->image = $new_filename;
+        }
 
         $product->save();
 

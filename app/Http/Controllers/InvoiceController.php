@@ -37,6 +37,15 @@ class InvoiceController extends Controller
             'status' => 'required',
         ]);
 
+        // If expiration date is in the past, return to form
+        $datetime = new \DateTime($request->input('expiration_date'));
+        if ($datetime < new \DateTime()) {
+            return redirect()->route('invoices.create')
+                ->withErrors([
+                    'expiration_date' => 'Expiration date must be in the future',
+                ]);
+        }
+
         // Products are passed along as product_id_x and product_amount_x
         // So store them in an array
 
