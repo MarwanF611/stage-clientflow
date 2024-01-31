@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Edit ivoice
+            Edit quote
         </h2>
     </x-slot>
 
@@ -11,9 +11,9 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-                            Invoice information
+                            Quote information
                         </h2>
-                        <form action={{ route('invoices.store') }} method="POST">
+                        <form action={{ route('quotes.store') }} method="POST">
                             @csrf
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
@@ -22,7 +22,7 @@
                                         Customer
                                     </label>
                                     <input type="text" name="customer" id="customer"
-                                        value="{{ $invoice->customer->id }}"
+                                        value="{{ $quote->customer->id }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Customer ID" required>
 
@@ -58,7 +58,7 @@
                                     </label>
 
                                     <input type="text" name="phone_number" id="telefoonnummer"
-                                        value="{{ $invoice->customer->phone_number }}"
+                                        value="{{ $quote->customer->phone_number }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="0612345678" required>
 
@@ -86,7 +86,7 @@
                                             </svg>
                                         </div>
                                         <input datepicker datepicker-autohide type="text"
-                                            value="{{ $invoice->expiration_date }}" name="expiration_date"
+                                            value="{{ $quote->expiration_date }}" name="expiration_date"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Select date">
                                     </div>
@@ -119,7 +119,7 @@
                                     $productCount = 0;
                                 @endphp
 
-                                @foreach (json_decode($invoice->products) as $product)
+                                @foreach (json_decode($quote->products) as $product)
                                     <div class="w-full">
                                         <label for="product_id_{{ $productCount }}"
                                             class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">

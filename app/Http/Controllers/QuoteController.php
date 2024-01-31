@@ -81,4 +81,16 @@ class QuoteController extends Controller
         return redirect()->route('quotes.index')
             ->with('success', 'Invoice deleted successfully.');
     }
+
+    public function edit(
+        Request $request,
+    ) {
+        $quote = Quote::find($request->id);
+        $products = json_decode($quote->products);
+
+        return view('quotes.edit', [
+            'quote' => $quote,
+            'products' => $products,
+        ]);
+    }
 }

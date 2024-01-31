@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/quotes/store', [QuoteController::class, 'store'])->name('quotes.store');
     Route::get('/quotes/download', [QuoteController::class, 'download'])->name('quotes.download');
     Route::get('/quotes/delete', [QuoteController::class, 'delete'])->name('quotes.delete');
+    Route::get('/quotes/edit', [QuoteController::class, 'edit'])->name('quotes.edit');
 
     // Invoices
     Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');

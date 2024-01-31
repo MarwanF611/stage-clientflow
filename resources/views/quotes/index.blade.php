@@ -53,7 +53,10 @@
                                     {{ $quote->created_at->format('d-m-Y') }}
                                 </td>
                                 <td class="px-6 py-4 flex items-center space-x-4">
-                                    <a href="#" class="font-medium text-gray-300 hover:underline">
+                                    <a href="{{ route('quotes.edit', [
+                                        'id' => $quote->id,
+                                    ]) }}"
+                                        class="font-medium text-gray-300 hover:underline">
                                         @svg('heroicon-m-pencil-square', 'h-5 w-5')
                                     </a>
                                     <a href="{{ route('quotes.download', [
