@@ -103,6 +103,8 @@ class QuoteController extends Controller
             'product_amount_0' => 'required',
         ]);
 
+
+
         $products = [];
         $i = 0;
         while ($request->has('product_id_' . $i)) {
@@ -114,7 +116,18 @@ class QuoteController extends Controller
         }
 
         $quote = Quote::find($request->id);
-        $quote->customer = $request->input('customer');
+
+        if (!$quote) {
+            dd('Quote not found');
+        }
+
+        // Assuming customer is required for a quote
+        if (!$request->has('customer')) {
+            dd('Customer not found');
+        }
+
+
+        $quote->customer_id = $request->input('customer');
         $quote->products = json_encode($products);
         $quote->save();
 
