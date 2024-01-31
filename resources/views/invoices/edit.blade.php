@@ -40,10 +40,16 @@
                                         method</label>
                                     <select id="payment_method" name="payment_method"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="cash">Cash</option>
-                                        <option value="bank">Bank</option>
-                                        <option value="card">Card</option>
-                                        <option value="credit_card">Credit card</option>
+                                        <option value="cash"
+                                            {{ $invoice->payment_method == 'cash' ? 'selected' : '' }}>Cash</option>
+                                        <option value="bank"
+                                            {{ $invoice->payment_method == 'bank' ? 'selected' : '' }}>Bank</option>
+                                        <option value="card"
+                                            {{ $invoice->payment_method == 'card' ? 'selected' : '' }}>Card</option>
+                                        <option value="credit_card"
+                                            {{ $invoice->payment_method == 'credit_card' ? 'selected' : '' }}>Credit
+                                            card</option>
+
                                     </select>
 
                                     @error('land')
@@ -103,9 +109,12 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                                     <select id="status" name="status"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="open">Open</option>
-                                        <option value="expired">Expired</option>
-                                        <option value="completed">Completed</option>
+                                        <option value="open" {{ $invoice->status == 'open' ? 'selected' : '' }}>Open
+                                        </option>
+                                        <option value="expired" {{ $invoice->status == 'expired' ? 'selected' : '' }}>
+                                            Expired</option>
+                                        <option value="completed"
+                                            {{ $invoice->status == 'completed' ? 'selected' : '' }}>Completed</option>
                                     </select>
 
                                     @error('land')
@@ -167,12 +176,12 @@
                             <div class="flex flex-col">
                                 <button type="button" onclick="addProduct()"
                                     class="inline-flex items-center px-5 w-fit py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-600 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-500">
-                                    Product toevoegen @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
+                                    Add product @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
                                 </button>
 
                                 <button type="submit"
                                     class="inline-flex w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                    Maak factuur @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                    Update invoice @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
                                 </button>
                             </div>
                         </form>
