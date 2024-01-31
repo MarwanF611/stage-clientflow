@@ -121,7 +121,7 @@
                             <td>
                                 Quote #{{ $quote->id }}<br />
                                 Created: {{ Carbon::now()->format('F d, Y') }}<br />
-                                Due: {{ $quote->expiration_date }}
+                                Expires: {{ Carbon::now()->addDays(30)->format('F d, Y') }}
                             </td>
                         </tr>
                     </table>
@@ -142,7 +142,7 @@
                                 {{ $quote->customer->company_name }}.<br />
                                 {{ $quote->customer->street_name }} {{ $quote->customer->house_number }},
                                 {{ $quote->customer->postcode }}<br />
-                                {{ $quote->customer->phone_number }}<br />
+                                Tel. {{ $quote->customer->phone_number }}<br />
 
                             </td>
                         </tr>
