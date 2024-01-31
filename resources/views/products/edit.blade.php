@@ -13,7 +13,7 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Product information
                         </h2>
-                        <form action={{ route('products.edit') }} method="GET" enctype="multipart/form-data">
+                        <form action={{ route('products.store') }} method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
@@ -41,7 +41,7 @@
                                         <option value="desktop">Desktop</option>
                                         <option value="telefoon">Telefoon</option>
                                         <option value="tablet">Tablet</option>
-                                        <option value="accessoire">Accessoire</option>
+                                        <option value="accessoidre">Accessoire</option>
                                     </select>
 
                                     @error('type')
