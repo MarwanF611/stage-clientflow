@@ -157,7 +157,8 @@ class InvoiceController extends Controller
         $datetime = new \DateTime($request->input('expiration_date'));
 
         $invoice = Invoice::find($request->id);
-        $invoice->customer = $request->input('customer');
+
+        $invoice->customer_id = $request->input('customer');
         $invoice->payment_method = $request->input('payment_method');
         $invoice->products = json_encode($products);
         $invoice->expiration_date = $datetime->format('Y-m-d');

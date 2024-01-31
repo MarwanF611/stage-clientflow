@@ -15,6 +15,7 @@
                         </h2>
                         <form action={{ route('quotes.update') }} method="POST">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $quote->id }}">
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="customer"
