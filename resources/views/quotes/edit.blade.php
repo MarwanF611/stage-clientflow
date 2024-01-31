@@ -13,7 +13,7 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Quote information
                         </h2>
-                        <form action={{ route('quotes.store') }} method="POST">
+                        <form action={{ route('quotes.update') }} method="POST">
                             @csrf
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">

@@ -13,7 +13,7 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Invoice information
                         </h2>
-                        <form action={{ route('invoices.store') }} method="POST">
+                        <form action={{ route('invoices.update') }} method="POST">
                             @csrf
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">

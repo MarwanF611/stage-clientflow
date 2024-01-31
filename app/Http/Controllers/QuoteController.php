@@ -93,4 +93,32 @@ class QuoteController extends Controller
             'products' => $products,
         ]);
     }
+
+    public function update(
+        Request $request,
+    ) {
+        $request->validate([
+            'customer' => 'required',
+            'product_id_0' => 'required',
+            'product_amount_0' => 'required',
+        ]);
+
+        $products = [];
+        $i = 0;
+        while ($request->has('product_id_' . $i)) {
+            $products[] = [
+                'id' => $request->input('product_id_' . $i),
+                'amount' => $request->input('product_amount_' . $i),
+            ];
+            $i++;
+        }
+
+        $quote = Quote::find($request->id);
+        $quote->customer = $request->input('customer');
+        $quote->products = json_encode($products);
+        $quote->save();
+
+        return redirect()->route('quotes.index')
+            ->with('success', 'Quote updated successfully.');
+    }
 }
