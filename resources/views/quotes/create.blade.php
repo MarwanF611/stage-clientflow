@@ -32,40 +32,6 @@
                                     @enderror
                                 </div>
 
-                                <div>
-                                    <label for="payment_method"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Land</label>
-                                    <select id="payment_method" name="payment_method"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="cash">Cash</option>
-                                        <option value="bank">Bank</option>
-                                        <option value="card">Card</option>
-                                        <option value="credit_card">Credit card</option>
-                                    </select>
-
-                                    @error('land')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label for="telefoonnummer"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Telefoonnummer
-                                    </label>
-
-                                    <input type="text" name="phone_number" id="telefoonnummer"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="0612345678" required>
-
-                                    @error('telefoonnummer')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
                                 <div class="border-t w-full col-span-2 border-gray-600"></div>
 
                                 <div class="w-full">
@@ -84,21 +50,19 @@
                                     @enderror
                                 </div>
                                 <div class="w-full">
-                                    <label for="product_aantal_0"
+                                    <label for="product_amount_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Aantal
                                     </label>
-                                    <input type="text" name="product_aantal_0" id="product_aantal_0"
+                                    <input type="text" name="product_amount_0" id="product_amount_0"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
 
-                                    @error('product_aantal')
+                                    @error('product_amount_0')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
                                         </div>
                                     @enderror
-
-
                                 </div>
                                 <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">
                                 </div>
