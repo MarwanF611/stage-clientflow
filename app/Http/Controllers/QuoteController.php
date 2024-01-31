@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Quote;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -60,7 +61,7 @@ class QuoteController extends Controller
         $products = json_decode($quote->products);
 
         foreach ($products as $product) {
-            $product->details = Quote::find($product->id);
+            $product->details = Product::find($product->id);
         }
 
         $pdf = Pdf::loadView('pdf.quote', [
@@ -114,6 +115,7 @@ class QuoteController extends Controller
             ];
             $i++;
         }
+
 
         $quote = Quote::find($request->id);
 

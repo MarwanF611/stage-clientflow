@@ -187,7 +187,7 @@
 <script>
     let productCount =
         @php
-            echo $productCount;
+            echo $productCount - 1;
         @endphp;
 
     function addProduct() {
