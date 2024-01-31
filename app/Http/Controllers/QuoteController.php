@@ -48,8 +48,8 @@ class QuoteController extends Controller
             'products' => json_encode($products),
         ]);
 
-        return redirect()->route('invoices.index')
-            ->with('success', 'Invoice created successfully.');
+        return redirect()->route('quotes.index')
+            ->with('success', 'Quote created successfully.');
     }
 
 
