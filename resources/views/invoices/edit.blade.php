@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Make new invoice
+            Edit invoice
         </h2>
     </x-slot>
 
@@ -127,8 +127,8 @@
 
                                     @error('product_id_0')
     <div class="text-red-500 mt-2 text-sm">
-                                                                        {{ $message }}
-                                                                    </div>
+                                                                            {{ $message }}
+                                                                        </div>
 @enderror
                                                                              
                                     </div>
@@ -143,8 +143,8 @@
 
                                     @error('product_aantal')
     <div class="text-red-500 mt-2 text-sm">
-                                                                                                                        {{ $message }}
-                                                                                                                    </div>
+                                                                                                                            {{ $message }}
+                                                                                                                        </div>
 @enderror
                                 </div>
                                 <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">

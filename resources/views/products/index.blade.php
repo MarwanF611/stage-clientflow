@@ -60,9 +60,20 @@
                                 <td class="px-6 py-4">
                                     {{ $product->stock }}
                                 </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <td class="px-6 py-4 flex items-center space-x-4">
+                                    <a href="{{ route('products.edit', [
+                                        'id' => $product->id,
+                                    ]) }}"
+                                        class="font-medium text-gray-300 hover:underline">
+                                        @svg('heroicon-m-pencil-square', 'h-5 w-5')
+                                    </a>
+
+                                    <a href="{{ route('products.delete', [
+                                        'id' => $product->id,
+                                    ]) }}"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                        @svg('heroicon-s-trash', 'h-5 w-5')
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
