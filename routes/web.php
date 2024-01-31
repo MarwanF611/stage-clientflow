@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/quotes/download', [QuoteController::class, 'download'])->name('quotes.download');
     Route::get('/quotes/delete', [QuoteController::class, 'delete'])->name('quotes.delete');
     Route::get('/quotes/edit', [QuoteController::class, 'edit'])->name('quotes.edit');
+    Route::post('/quotes/update', [QuoteController::class, 'update'])->name('quotes.update');
 
     // Invoices
     Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
@@ -61,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoices/download', [InvoiceController::class, 'download'])->name('invoices.download');
     Route::get('/invoices/delete', [InvoiceController::class, 'delete'])->name('invoices.delete');
     Route::get('/invoices/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
+    Route::post('/invoices/update', [InvoiceController::class, 'update'])->name('invoices.update');
 });
 
 require __DIR__ . '/auth.php';
