@@ -1,24 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2
+            class="flex display-flex justify-between font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Customers
+
+            <x-primary-link route_name="customers.create">
+                Add new customer
+            </x-primary-link>
         </h2>
+
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
-                    This is the customers page.
-
-                    <x-primary-link route_name="customers.create">
-                        Add new customer
-                    </x-primary-link>
-                </div>
-            </div>
-
-
-            <div class="relative mt-3 overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -57,10 +52,21 @@
                                 <td class="px-6 py-4">
                                     {{ $customer->phone_number }}
                                 </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <td class="px-6 py-4 flex items-center space-x-4">
+                                    <a href="{{ route('customers.edit', [
+                                        'id' => $customer->id,
+                                    ]) }}"
+                                        class="font-medium text-gray-300 hover:underline">
+                                        @svg('heroicon-m-pencil-square', 'h-5 w-5')
+                                    </a>
+                                    <a href="{{ route('customers.delete', [
+                                        'id' => $customer->id,
+                                    ]) }}"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                        @svg('heroicon-s-trash', 'h-5 w-5')
+                                    </a>
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Add new customer
+            Edit customer
         </h2>
     </x-slot>
 
@@ -13,15 +13,18 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Customer information
                         </h2>
-                        <form action={{ route('customers.store') }} method="POST">
+                        <form action={{ route('customers.update') }} method="POST">
                             @csrf
+
+                            <input type="hidden" name="id" value="{{ $customer->id }}">
+
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="email"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Email
                                     </label>
-                                    <input type="email" name="email" id="email"
+                                    <input type="email" name="email" id="email" value="{{ $customer->email }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Email van de klant" required>
 
@@ -37,6 +40,7 @@
                                         Voornaam
                                     </label>
                                     <input type="text" name="first_name" id="voornaam"
+                                        value="{{ $customer->first_name }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Jan" required>
 
@@ -52,6 +56,7 @@
                                         Achternaam
                                     </label>
                                     <input type="text" name="last_name" id="achternaam"
+                                        value="{{ $customer->last_name }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Janssen" required>
 
@@ -88,6 +93,7 @@
                                     </label>
 
                                     <input type="text" name="phone_number" id="telefoonnummer"
+                                        value="{{ $customer->phone_number }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="0612345678" required>
 
@@ -105,6 +111,7 @@
                                             Straatnaam
                                         </label>
                                         <input type="text" name="street_name" id="straatnaam"
+                                            value="{{ $customer->street_name }}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -120,6 +127,7 @@
                                             Huisnummer
                                         </label>
                                         <input type="text" name="house_number" id="huisnummer"
+                                            value="{{ $customer->house_number }}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -136,6 +144,7 @@
                                             Postcode
                                         </label>
                                         <input type="text" name="postcode" id="postcode"
+                                            value="{{ $customer->postcode }}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -157,6 +166,7 @@
                                         Bedrijfsnaam
                                     </label>
                                     <input type="text" name="company_name" id="bedrijfsnaam"
+                                        value="{{ $customer->company_name }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Gold snack NV" required>
 
@@ -172,6 +182,7 @@
                                         BTW-nummer
                                     </label>
                                     <input type="text" name="vat_number" id="btw_nummer"
+                                        value="{{ $customer->vat_number }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
 
@@ -187,6 +198,7 @@
                                         IBAN
                                     </label>
                                     <input type="text" name="iban" id="iban" rows="3"
+                                        value="{{ $customer->iban }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="BE" required></input>
 
@@ -199,7 +211,7 @@
                             </div>
                             <button type="submit"
                                 class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                Klant toevoegen @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                Update customer @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
                             </button>
                         </form>
                     </div>
