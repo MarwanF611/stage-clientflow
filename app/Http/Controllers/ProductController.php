@@ -76,5 +76,40 @@ class ProductController extends Controller
         ]);
     }
 
-  
+    public function update(Request $request)
+    {
+        $rules = $request->validate([
+            'name'  => 'required',
+            'type' => 'required',
+            'price' => 'required|numeric|min:0|max:9999',
+            'stock' => 'required|integer|min:0',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            // Get image file
+            $image = $request->file('image');
+            $new_filename = Str::uuid() . '.' . $image->getClientOriginalExtension();
+
+            // Store image file on disk
+            $image->storeAs('public/images', $new_filename);
+        }
+
+        $product = Product::find($request->get('id'));
+
+        $product->name = $request->input('name');
+        $product->type = $request->input('type');
+        $product->price = $request->input('price');
+        $product->stock = $request->input('stock');
+
+        $product->image = $new_filename;
+
+        $product->save();
+
+        return redirect()->route('products.index')
+            ->with('success', 'product is succesvol aangepast.');
+    }
 }

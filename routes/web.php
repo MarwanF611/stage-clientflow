@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
     Route::get('/products/delete', [ProductController::class, 'delete'])->name('products.delete');
     Route::get('/products/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
 
 
     // Quotes
