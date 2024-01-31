@@ -58,5 +58,23 @@ class ProductController extends Controller
             ->with('success', 'product is succesvol aangemaakt.');
     }
 
+    public function delete(Request $request)
+    {
+        $product = Product::find($request->get('id'));
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->with('success', 'product is succesvol verwijderd.');
+    }
+
+    public function edit(Request $request)
+    {
+        $product = Product::find($request->get('id'));
+
+        return view('products.edit', [
+            'product' => $product,
+        ]);
+    }
+
   
 }
