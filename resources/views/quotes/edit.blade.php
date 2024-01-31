@@ -167,12 +167,12 @@
                             <div class="flex flex-col">
                                 <button type="button" onclick="addProduct()"
                                     class="inline-flex items-center px-5 w-fit py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-600 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-500">
-                                    Product toevoegen @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
+                                    Add product @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
                                 </button>
 
                                 <button type="submit"
                                     class="inline-flex w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                    Maak factuur @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                    Updtate quote @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
                                 </button>
                             </div>
                         </form>
