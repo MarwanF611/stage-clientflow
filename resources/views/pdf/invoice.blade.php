@@ -110,7 +110,7 @@
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td class="title">
@@ -129,7 +129,7 @@
             </tr>
 
             <tr class="information">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td>
@@ -153,7 +153,7 @@
             <tr class="heading">
                 <td>Payment Method</td>
 
-                <td>
+                <td colspan="4">
                     Check #
                 </td>
             </tr>
@@ -161,20 +161,23 @@
             <tr class="details">
                 <td>{{ ucfirst($invoice->payment_method) }}</td>
 
-                <td>1000</td>
+                <td colspan="4">1000</td>
             </tr>
 
             <tr class="heading">
                 <td>Item</td>
+                <td>Amount</td>
+                <td>Price per unit</td>
+                <td colspan="4">Price</td>
 
-                <td>Price</td>
             </tr>
 
             @foreach ($products as $product)
                 <tr class="item {{ $loop->last ? 'last' : '' }}">
-                    <td>{{ $product->details->name }} x{{ $product->amount }}</td>
-                <tr>{{ $product->details->price }} EUR</tr>
-                <td>{{ $product->details->price * $product->amount }} EUR</td>
+                    <td>{{ $product->details->name }} </td>
+                    <td>{{ $product->amount }}x</td>
+                    <td>{{ $product->details->price }} EUR</td>
+                    <td colspan="4">{{ $product->details->price * $product->amount }} EUR</td>
                 </tr>
             @endforeach
 
@@ -183,7 +186,7 @@
             <tr class="total">
                 <td></td>
 
-                <td>
+                <td colspan="3">
                     Total:
                     @php
                         $total = 0;
