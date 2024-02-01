@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Customer;
 use App\Models\Product;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -12,17 +13,23 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = Invoice::simplePaginate(20);
+     
 
         $invoices->withPath('invoices');
 
         return view('invoices.index', [
             'invoices' => $invoices,
+       
         ]);
     }
 
     public function create()
     {
-        return view('invoices.create');
+        $customers = Customer::all();
+
+        return view('invoices.create', [
+            'customers' => $customers,
+        ]);
     }
 
     public function store(
@@ -108,6 +115,8 @@ class InvoiceController extends Controller
     ) {
         $invoice = Invoice::find($request->id);
         $products = json_decode($invoice->products);
+        $customers = Customer::all();
+
 
         foreach ($products as $product) {
             $product->details = Product::find($product->id);
@@ -116,6 +125,7 @@ class InvoiceController extends Controller
         return view('invoices.edit', [
             'invoice' => $invoice,
             'products' => $products,
+            'customers' => $customers,
         ]);
     }
 

@@ -21,7 +21,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Name
                                     </label>
-                                    <input type="text" name="name" id="name"
+                                    <input type="text" name="name" id="name" value="{{ old('name') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Naam van het product" required>
 
@@ -37,11 +37,18 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
                                     <select id="type" name="type"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="laptop">Laptop</option>
-                                        <option value="desktop">Desktop</option>
-                                        <option value="telefoon">Telefoon</option>
-                                        <option value="tablet">Tablet</option>
-                                        <option value="accessoire">Accessoire</option>
+                                        <option value="laptop" {{ old('type') == 'laptop' ? 'selected' : '' }}>
+                                            Laptop
+                                        </option>
+                                        <option value="desktop" {{ old('type') == 'desktop' ? 'selected' : '' }}>
+                                            Desktop
+                                        </option>
+                                        <option value="telefoon" {{ old('type') == 'telefoon' ? 'selected' : '' }}>
+                                            Telefoon</option>
+                                        <option value="tablet" {{ old('type') == 'tablet' ? 'selected' : '' }}>Tablet
+                                        </option>
+                                        <option value="accessoire" {{ old('type') == 'accessoire' ? 'selected' : '' }}>
+                                            Accessoire</option>
                                     </select>
 
                                     @error('type')
@@ -56,7 +63,7 @@
                                         Prijs
                                     </label>
 
-                                    <input type="text" name="price" id="price"
+                                    <input type="text" name="price" id="price" value="{{ old('price') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="€100.00" required>
 
@@ -72,7 +79,7 @@
                                         Voorraad
                                     </label>
 
-                                    <input type="text" name="stock" id="stock"
+                                    <input type="text" name="stock" id="stock" value="{{ old('stock') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="100" required>
 
@@ -110,7 +117,8 @@
                                             </div>
                                         </div>
                                         <input id="dropzone-file" type="file" class="hidden" name="image"
-                                            accept="image/*" onchange="displayFileName(this)" />
+                                            value="{{ old('image') }}" accept="image/*"
+                                            onchange="displayFileName(this)" />
                                     </label>
                                 </div>
 

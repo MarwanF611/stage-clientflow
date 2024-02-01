@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Quote;
+use App\Models\Customer;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,17 @@ class QuoteController extends Controller
 
     public function create()
     {
-        return view('quotes.create');
+        $customers = Customer::all();
+
+        return view('quotes.create', [
+            'customers' => $customers,
+        ]);
+
     }
 
     public function store(
         Request $request
+
     ) {
         $request->validate([
             'customer' => 'required',
@@ -85,13 +92,16 @@ class QuoteController extends Controller
 
     public function edit(
         Request $request,
+
     ) {
         $quote = Quote::find($request->id);
         $products = json_decode($quote->products);
+        $customers = Customer::all();
 
         return view('quotes.edit', [
             'quote' => $quote,
             'products' => $products,
+            'customers' => $customers,
         ]);
     }
 

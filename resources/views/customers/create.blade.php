@@ -21,7 +21,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Email
                                     </label>
-                                    <input type="email" name="email" id="email"
+                                    <input type="email" name="email" id="email" value="{{ old('email') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Email van de klant" required>
 
@@ -36,7 +36,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Voornaam
                                     </label>
-                                    <input type="text" name="first_name" id="voornaam"
+                                    <input type="text" name="first_name" id="voornaam" value="{{ old('voornaam') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Jan" required>
 
@@ -52,6 +52,7 @@
                                         Achternaam
                                     </label>
                                     <input type="text" name="last_name" id="achternaam"
+                                        value="{{ old('achternaam') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Janssen" required>
 
@@ -66,13 +67,20 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Land</label>
                                     <select id="land" name="country"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="Nederland">Nederland</option>
-                                        <option value="België">België</option>
-                                        <option value="Duitsland">Duitsland</option>
-                                        <option value="Verenigd Koninkrijk">
+                                        <option value="Nederland"
+                                            @if (old('land') == 'Nederland') selected="selected" @endif>Nederland
+                                        </option>
+                                        <option value="België"
+                                            @if (old('land') == 'België') selected="selected" @endif>België</option>
+                                        <option value="Duitsland"
+                                            @if (old('land') == 'Duitsland') selected="selected" @endif>Duitsland
+                                        </option>
+                                        <option value="Verenigd Koninkrijk"
+                                            @if (old('land') == 'Verenigd Koninkrijk') selected="selected" @endif>
                                             Verenigd Koninkrijk
                                         </option>
-                                        <option value="India">India</option>
+                                        <option value="India"
+                                            @if (old('land') == 'India') selected="selected" @endif>India</option>
                                     </select>
 
                                     @error('land')
@@ -88,6 +96,7 @@
                                     </label>
 
                                     <input type="text" name="phone_number" id="telefoonnummer"
+                                        value="{{ old('telefoonnummer') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="0612345678" required>
 
@@ -105,6 +114,7 @@
                                             Straatnaam
                                         </label>
                                         <input type="text" name="street_name" id="straatnaam"
+                                            value="{{ old('straatnaam') }}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -120,6 +130,7 @@
                                             Huisnummer
                                         </label>
                                         <input type="text" name="house_number" id="huisnummer"
+                                            value="{{ old('huisnummer') }}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -136,6 +147,7 @@
                                             Postcode
                                         </label>
                                         <input type="text" name="postcode" id="postcode"
+                                            value="{{ old('postcode') }}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             required>
 
@@ -157,6 +169,7 @@
                                         Bedrijfsnaam
                                     </label>
                                     <input type="text" name="company_name" id="bedrijfsnaam"
+                                        value="{{ old('bedrijfsnaam') }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Gold snack NV" required>
 
@@ -172,6 +185,7 @@
                                         BTW-nummer
                                     </label>
                                     <input type="text" name="vat_number" id="btw_nummer"
+                                        value="{{ old('btw_nummer') }}" maxlength="10" minlength="10"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="000" required>
 
@@ -187,6 +201,7 @@
                                         IBAN
                                     </label>
                                     <input type="text" name="iban" id="iban" rows="3"
+                                        value="{{ old('iban') }}" maxlength="18" minlength="18"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="BE" required></input>
 

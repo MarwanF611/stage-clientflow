@@ -173,8 +173,8 @@
             @foreach ($products as $product)
                 <tr class="item {{ $loop->last ? 'last' : '' }}">
                     <td>{{ $product->details->name }} x{{ $product->amount }}</td>
-
-                    <td>{{ $product->details->price * $product->amount }} EUR</td>
+                <tr>{{ $product->details->price }} EUR</tr>
+                <td>{{ $product->details->price * $product->amount }} EUR</td>
                 </tr>
             @endforeach
 
