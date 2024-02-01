@@ -110,7 +110,7 @@
     <div class="quote-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td class="title">
@@ -129,7 +129,7 @@
             </tr>
 
             <tr class="information">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td>
@@ -154,15 +154,18 @@
 
             <tr class="heading">
                 <td>Item</td>
+                <td>Amount</td>
+                <td>Price per unit</td>
+                <td colspan="3">Price</td>
 
-                <td>Price</td>
             </tr>
 
             @foreach ($products as $product)
                 <tr class="item {{ $loop->last ? 'last' : '' }}">
-                    <td>{{ $product->details->name }} x{{ $product->amount }}</td>
-                <tr>{{ $product->details->price }} EUR</tr>
-                <td>{{ $product->details->price * $product->amount }} EUR</td>
+                    <td>{{ $product->details->name }} </td>
+                    <td>{{ $product->amount }}x</td>
+                    <td>{{ $product->details->price }} EUR</td>
+                    <td colspan="3">{{ $product->details->price * $product->amount }} EUR</td>
                 </tr>
             @endforeach
 
@@ -171,7 +174,7 @@
             <tr class="total">
                 <td></td>
 
-                <td>
+                <td colspan="3">
                     Total:
                     @php
                         $total = 0;
