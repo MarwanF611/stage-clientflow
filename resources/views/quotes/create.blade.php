@@ -21,10 +21,6 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Customer
                                     </label>
-                                    {{-- <input type="text" name="customer" id="customer" value="{{ old('customer') }}"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Customer ID" required> --}}
-
                                     <select name="customer" id="customer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         @foreach ($customers as $customer)
@@ -61,7 +57,7 @@
                                 <div class="w-full">
                                     <label for="product_amount_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        amount
+                                        Amount
                                     </label>
                                     <input type="text" name="product_amount_0" id="product_amount_0"
                                         value="{{ old('product_amount_0') }}"
@@ -74,7 +70,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">
+                                <div id="products-parent" class="w-full col-span-2">
                                 </div>
                             </div>
 
@@ -104,8 +100,8 @@
     function addProduct() {
         productCount++;
         document.getElementById("products-parent").innerHTML += `
-        
-        <div>
+        <div id="p_id_${productCount}" class="w-full col-span-2 grid grid-cols-2 gap-6">
+        <div >
                                         <label for="product_id_${productCount}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Product ID
@@ -120,10 +116,11 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="flex-1"> 
                                         <label for="product_aantal_${productCount}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Aantal
+                                            Amount
                                         </label>
                                         <input type="text" name="product_aantal_${productCount}" id="product_aantal_${productCount}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -134,8 +131,17 @@
                                                 {{ $message }}
                                             </div>
                                         @enderror
-                                        
+                                        </div>
+                                        <button type="button" onclick="removeProduct(${productCount})"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                        @svg('heroicon-s-trash', 'h-5 w-5')
+                                    </button>
+                                    </div>
                                     </div>
         `;
+    }
+
+    function removeProduct(id) {
+        document.getElementById('p_id_' + id).remove();
     }
 </script>
