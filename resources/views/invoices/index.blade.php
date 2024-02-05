@@ -28,6 +28,9 @@
                                 Expiry date
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Total
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
                         </tr>
@@ -66,6 +69,9 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $invoice->expiration_date }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    Total: {{ $product->details->price * $product->amount }} €
                                 </td>
                                 <td class="px-6 py-4 flex items-center space-x-4">
                                     <a href="{{ route('invoices.edit', [
