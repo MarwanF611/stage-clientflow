@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Make new quote
+            Edit quote
         </h2>
     </x-slot>
 
@@ -13,18 +13,26 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Quote information
                         </h2>
-                        <form action={{ route('quotes.store') }} method="POST">
+                        <form action={{ route('quotes.update') }} method="POST">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $quote->id }}">
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="customer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Customer
                                     </label>
+                                    {{-- <input type="text" name="customer" id="customer"
+                                        value="{{ $quote->customer->id }}"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Customer ID" required> --}}
+
                                     <select name="customer" id="customer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         @foreach ($customers as $customer)
-                                            <option value="{{ $customer->id }}">
+                                            <option value="{{ $customer->id }}"
+                                                {{ old('customer') == $customer->id ? 'selected' : '' }}
+                                                {{ $quote->customer->id == $customer->id ? 'selected' : '' }}>
                                                 {{ $customer->first_name }}
                                                 {{ $customer->last_name }}
                                                 ({{ $customer->company_name }})
@@ -33,44 +41,62 @@
                                     </select>
 
                                     @error('customer')
-                                        <div class="text-red-500 mt-2 text-sm">
+                                        <div
+                                            class="text-red-500
+                                                mt-2 text-sm">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="border-t w-full col-span-2 border-gray-600"></div>
-                                <div class="w-full">
-                                    <label for="product_id_0"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Product ID
-                                    </label>
-                                    <input type="text" name="product_id_0" id="product_id_0"
-                                        value="{{ old('product_id_0') }}"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="XXXXX" required>
-                                    @error('product_id_0')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="w-full">
-                                    <label for="product_amount_0"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Amount
-                                    </label>
-                                    <input type="text" name="product_amount_0" id="product_amount_0"
-                                        value="{{ old('product_amount_0') }}"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="000" required>
 
-                                    @error('product_amount_0')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div id="products-parent" class="w-full col-span-2">
+
+                                <div class="border-t w-full col-span-2 border-gray-600"></div>
+
+                                @php
+                                    $productCount = 0;
+                                @endphp
+
+                                @foreach (json_decode($quote->products) as $product)
+                                    <div class="w-full">
+                                        <label for="product_id_{{ $productCount }}"
+                                            class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">
+                                            Product ID
+                                        </label>
+                                        <input type="text" name="product_id_{{ $productCount }}"
+                                            id="product_id_{{ $productCount }}" value="{{ $product->id }}"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="XXXXX" required>
+
+                                        @error('product_id_{{ $productCount }}')
+                                            <div class="text-red-500 mt-2 text-sm">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="product_amount_{{ $productCount }}"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                            Aantal
+                                        </label>
+                                        <input type="text" name="product_amount_{{ $productCount }}"
+                                            id="product_amount_{{ $productCount }}" value="{{ $product->amount }}"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="000" required>
+
+                                        @error('product_amount_{{ $productCount }}')
+                                            <div class="text-red-500 mt-2 text-sm">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    @php
+                                        $productCount++;
+                                    @endphp
+                                @endforeach
+
+
+
+                                <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">
                                 </div>
                             </div>
 
@@ -82,7 +108,7 @@
 
                                 <button type="submit"
                                     class="inline-flex w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                    Create quote @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                    Updtate quote @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
                                 </button>
                             </div>
                         </form>
@@ -95,18 +121,21 @@
 
 
 <script>
-    let productCount = 0;
+    let productCount =
+        @php
+            echo $productCount - 1;
+        @endphp;
 
     function addProduct() {
         productCount++;
         document.getElementById("products-parent").innerHTML += `
-        <div id="p_id_${productCount}" class="w-full col-span-2 grid grid-cols-2 gap-6">
-        <div >
+        
+        <div>
                                         <label for="product_id_${productCount}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Product ID
                                         </label>
-                                        <input type="text" name="product_id_${productCount}" id="product_id_${productCount}"
+                                        <input type="text"  name="product_id_${productCount}" id="product_id_${productCount}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             placeholder="XXXX" required>
 
@@ -116,32 +145,24 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div class="flex items-center space-x-3">
-                                        <div class="flex-1"> 
-                                        <label for="product_aantal_${productCount}"
+                                    <div>
+                                        <label for="product_amount_${productCount}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Amount
+                                            Aantal
                                         </label>
-                                        <input type="text" name="product_aantal_${productCount}" id="product_aantal_${productCount}"
+                                        <input type="text"  name="product_amount_${productCount}" id="product_amount_${productCount}"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             placeholder="000" required>
 
-                                        @error('product_aantal_${productCount}')
+                                        @error('product_amount_${productCount}')
                                             <div class="text-red-500 mt-2 text-sm">
                                                 {{ $message }}
                                             </div>
                                         @enderror
-                                        </div>
-                                        <button type="button" onclick="removeProduct(${productCount})"
-                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                        @svg('heroicon-s-trash', 'h-5 w-5')
-                                    </button>
-                                    </div>
+                                        
                                     </div>
         `;
     }
-
-    function removeProduct(id) {
-        document.getElementById('p_id_' + id).remove();
-    }
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/datepicker.min.js"></script>

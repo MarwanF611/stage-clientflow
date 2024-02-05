@@ -13,8 +13,11 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Product information
                         </h2>
-                        <form action={{ route('products.edit') }} method="GET" enctype="multipart/form-data">
+                        <form action={{ route('products.update') }} method="POST" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+
+
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="name"
@@ -41,7 +44,7 @@
                                         <option value="desktop">Desktop</option>
                                         <option value="telefoon">Telefoon</option>
                                         <option value="tablet">Tablet</option>
-                                        <option value="accessoire">Accessoire</option>
+                                        <option value="accessoidre">Accessoire</option>
                                     </select>
 
                                     @error('type')
@@ -69,7 +72,7 @@
                                 <div class="col-span-2">
                                     <label for="stock"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Voorraad
+                                        Stock
                                     </label>
 
                                     <input type="text" name="stock" id="stock" value="{{ $product->stock }}"
@@ -133,7 +136,7 @@
                             </div>
                             <button type="submit"
                                 class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                Product toevoegen @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                Update product @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
                             </button>
                         </form>
                     </div>

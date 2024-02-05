@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
     Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
+    Route::get('/customers/delete', [CustomerController::class, 'delete'])->name('customers.delete');
+    Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+    Route::post('/customers/update', [CustomerController::class, 'update'])->name('customers.update');
 
     // Products
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -40,11 +43,19 @@ Route::middleware('auth')->group(function () {
     Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
     Route::get('/products/delete', [ProductController::class, 'delete'])->name('products.delete');
     Route::get('/products/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
+
+    Route::get('/products/delete', [ProductController::class, 'delete'])->name('products.delete');
+    Route::get('/products/edit', [ProductController::class, 'edit'])->name('products.edit');
 
     // Quotes
     Route::get('/quotes', [QuoteController::class, 'index'])->name('quotes.index');
     Route::get('/quotes/create', [QuoteController::class, 'create'])->name('quotes.create');
     Route::post('/quotes/store', [QuoteController::class, 'store'])->name('quotes.store');
+    Route::get('/quotes/download', [QuoteController::class, 'download'])->name('quotes.download');
+    Route::get('/quotes/delete', [QuoteController::class, 'delete'])->name('quotes.delete');
+    Route::get('/quotes/edit', [QuoteController::class, 'edit'])->name('quotes.edit');
+    Route::post('/quotes/update', [QuoteController::class, 'update'])->name('quotes.update');
 
     // Invoices
     Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
@@ -53,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoices/download', [InvoiceController::class, 'download'])->name('invoices.download');
     Route::get('/invoices/delete', [InvoiceController::class, 'delete'])->name('invoices.delete');
     Route::get('/invoices/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
+    Route::post('/invoices/update', [InvoiceController::class, 'update'])->name('invoices.update');
 });
 
 require __DIR__ . '/auth.php';

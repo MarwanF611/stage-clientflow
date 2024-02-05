@@ -2,33 +2,148 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Quote;
+use App\Models\Customer;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
 {
     public function index()
     {
-        return view('quotes.index');
+        $quotes = Quote::simplePaginate(20);
+
+        $quotes->withPath('quotes');
+
+        return view('quotes.index', [
+            'quotes' => $quotes,
+        ]);
     }
 
     public function create()
     {
-        return view('quotes.create');
+        $customers = Customer::all();
+
+        return view('quotes.create', [
+            'customers' => $customers,
+        ]);
+
     }
 
-    public function store()
-    {
-        return redirect()->route('quotes.index');
+    public function store(
+        Request $request
+
+    ) {
+        $request->validate([
+            'customer' => 'required',
+            'product_id_0' => 'required',
+            'product_amount_0' => 'required',
+        ]);
+
+        $products = [];
+        $i = 0;
+        while ($request->has('product_id_' . $i)) {
+            $products[] = [
+                'id' => $request->input('product_id_' . $i),
+                'amount' => $request->input('product_amount_' . $i),
+            ];
+            $i++;
+        }
+
+        Quote::create([
+            'customer_id' => $request->input('customer'),
+            'products' => json_encode($products),
+        ]);
+
+        return redirect()->route('quotes.index')
+            ->with('success', 'Quote created successfully.');
     }
 
-    public function generatePdf()
-    {
-        // $offerte = Offerte::find($id);
 
+    public function download(
+        Request $request,
+    ) {
+        $quote = Quote::find($request->id);
+        $products = json_decode($quote->products);
 
-        $pdf = Pdf::loadView('pdf.offerte', []);
+        foreach ($products as $product) {
+            $product->details = Product::find($product->id);
+        }
+
+        $pdf = Pdf::loadView('pdf.quote', [
+            'quote' => $quote,
+            'products' => $products,
+        ]);
         return $pdf->download(
             'quote_R' . random_int(1000, 9999) . '.pdf'
         );
+    }
+
+    public function delete(
+        Request $request,
+    ) {
+        $quote = Quote::find($request->id);
+        $quote->delete();
+
+        return redirect()->route('quotes.index')
+            ->with('success', 'Invoice deleted successfully.');
+    }
+
+    public function edit(
+        Request $request,
+
+    ) {
+        $quote = Quote::find($request->id);
+        $products = json_decode($quote->products);
+        $customers = Customer::all();
+
+        return view('quotes.edit', [
+            'quote' => $quote,
+            'products' => $products,
+            'customers' => $customers,
+        ]);
+    }
+
+    public function update(
+        Request $request,
+    ) {
+        $request->validate([
+            'customer' => 'required',
+            'product_id_0' => 'required',
+            'product_amount_0' => 'required',
+        ]);
+
+
+
+        $products = [];
+        $i = 0;
+        while ($request->has('product_id_' . $i)) {
+            $products[] = [
+                'id' => $request->input('product_id_' . $i),
+                'amount' => $request->input('product_amount_' . $i),
+            ];
+            $i++;
+        }
+
+
+        $quote = Quote::find($request->id);
+
+        if (!$quote) {
+            dd('Quote not found');
+        }
+
+        // Assuming customer is required for a quote
+        if (!$request->has('customer')) {
+            dd('Customer not found');
+        }
+
+
+        $quote->customer_id = $request->input('customer');
+        $quote->products = json_encode($products);
+        $quote->save();
+
+        return redirect()->route('quotes.index')
+            ->with('success', 'Quote updated successfully.');
     }
 }

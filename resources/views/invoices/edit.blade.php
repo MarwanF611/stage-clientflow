@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Edit invoice
+            Edit ivoice
         </h2>
     </x-slot>
 
@@ -13,18 +13,33 @@
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                             Invoice information
                         </h2>
-                        <form action={{ route('invoices.store') }} method="POST">
+                        <form action={{ route('invoices.update') }} method="POST">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $invoice->id }}">
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="customer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Customer
                                     </label>
-                                    <input type="text" name="customer" id="customer"
+                                    {{-- <input type="text" name="customer" id="customer"
                                         value="{{ $invoice->customer->id }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Customer ID" required>
+                                        placeholder="Customer ID" required> --}}
+
+                                    <select name="customer" id="customer"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        @foreach ($customers as $customer)
+                                            <option value="{{ $customer->id }}"
+                                                {{ old('customer') == $customer->id ? 'selected' : '' }}
+                                                {{ $invoice->customer->id == $customer->id ? 'selected' : '' }}>
+                                                {{ $customer->first_name }}
+                                                {{ $customer->last_name }}
+                                                ({{ $customer->company_name }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+
 
                                     @error('customer')
                                         <div class="text-red-500 mt-2 text-sm">
@@ -39,10 +54,16 @@
                                         method</label>
                                     <select id="payment_method" name="payment_method"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="cash">Cash</option>
-                                        <option value="bank">Bank</option>
-                                        <option value="card">Card</option>
-                                        <option value="credit_card">Credit card</option>
+                                        <option value="cash"
+                                            {{ $invoice->payment_method == 'cash' ? 'selected' : '' }}>Cash</option>
+                                        <option value="bank"
+                                            {{ $invoice->payment_method == 'bank' ? 'selected' : '' }}>Bank</option>
+                                        <option value="card"
+                                            {{ $invoice->payment_method == 'card' ? 'selected' : '' }}>Card</option>
+                                        <option value="credit_card"
+                                            {{ $invoice->payment_method == 'credit_card' ? 'selected' : '' }}>Credit
+                                            card</option>
+
                                     </select>
 
                                     @error('land')
@@ -86,7 +107,8 @@
                                             </svg>
                                         </div>
                                         <input datepicker datepicker-autohide type="text"
-                                            value="{{ $invoice->expiration_date }}" name="expiration_date"
+                                            value="{{ $invoice->expiration_date }}" id="expiration_date"
+                                            name="expiration_date"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Select date">
                                     </div>
@@ -102,9 +124,12 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                                     <select id="status" name="status"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option value="open">Open</option>
-                                        <option value="expired">Expired</option>
-                                        <option value="completed">Completed</option>
+                                        <option value="open" {{ $invoice->status == 'open' ? 'selected' : '' }}>Open
+                                        </option>
+                                        <option value="expired" {{ $invoice->status == 'expired' ? 'selected' : '' }}>
+                                            Expired</option>
+                                        <option value="completed"
+                                            {{ $invoice->status == 'completed' ? 'selected' : '' }}>Completed</option>
                                     </select>
 
                                     @error('land')
@@ -115,38 +140,50 @@
                                 </div>
                                 <div class="border-t w-full col-span-2 border-gray-600"></div>
 
-                                <div class="w-full">
-                                    <label for="product_id_0"
-                                        class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">
-                                        Product ID
-                                    </label>
-                                    <input type="text" " name="product_id_0"
-                                        id="product_id_0"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="XXXXX" required>
+                                @php
+                                    $productCount = 0;
+                                @endphp
 
-                                    @error('product_id_0')
-    <div class="text-red-500 mt-2 text-sm">
-                                                                            {{ $message }}
-                                                                        </div>
-@enderror
-                                                                             
+                                @foreach (json_decode($invoice->products) as $product)
+                                    <div class="w-full">
+                                        <label for="product_id_{{ $productCount }}"
+                                            class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">
+                                            Product ID
+                                        </label>
+                                        <input type="text" name="product_id_{{ $productCount }}"
+                                            id="product_id_{{ $productCount }}" value="{{ $product->id }}"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="XXXXX" required>
+
+                                        @error('product_id_{{ $productCount }}')
+                                            <div class="text-red-500 mt-2 text-sm">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                <div class="w-full">
-                                    <label for="product_amount_0"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Aantal
-                                    </label>
-                                    <input type="text" name="product_amount_0" id="product_amount_0"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="000" required>
+                                    <div class="w-full">
+                                        <label for="product_amount_{{ $productCount }}"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                            Aantal
+                                        </label>
+                                        <input type="text" name="product_amount_{{ $productCount }}"
+                                            id="product_amount_{{ $productCount }}" value="{{ $product->amount }}"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="000" required>
 
-                                    @error('product_aantal')
-    <div class="text-red-500 mt-2 text-sm">
-                                                                                                                            {{ $message }}
-                                                                                                                        </div>
-@enderror
-                                </div>
+                                        @error('product_amount_{{ $productCount }}')
+                                            <div class="text-red-500 mt-2 text-sm">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    @php
+                                        $productCount++;
+                                    @endphp
+                                @endforeach
+
+
+
                                 <div id="products-parent" class="w-full col-span-2 grid grid-cols-2 gap-6">
                                 </div>
                             </div>
@@ -154,12 +191,12 @@
                             <div class="flex flex-col">
                                 <button type="button" onclick="addProduct()"
                                     class="inline-flex items-center px-5 w-fit py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-600 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-500">
-                                    Product toevoegen @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
+                                    Add product @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
                                 </button>
 
                                 <button type="submit"
                                     class="inline-flex w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                    Maak factuur @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                    Update invoice @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
                                 </button>
                             </div>
                         </form>
@@ -172,7 +209,10 @@
 
 
 <script>
-    let productCount = 0;
+    let productCount =
+        @php
+            echo $productCount - 1;
+        @endphp;
 
     function addProduct() {
         productCount++;

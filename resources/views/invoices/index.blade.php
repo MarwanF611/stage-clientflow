@@ -1,26 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2
+            class=" flex display-flex justify-between font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Invoices
+            <x-primary-link route_name="invoices.create">
+                Add new invoice
+            </x-primary-link>
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex justify-between p-6 text-gray-900 dark:text-gray-100 items-center">
-                    This is the invoices page.
-
-                    <a href="{{ route('invoices.create') }}"
-                        class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
-                        Add new invoice
-                    </a>
-                </div>
-            </div>
-
-
-
-            <div class="relative mt-3 overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -35,6 +26,9 @@
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Expiry date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Total
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 <span class="sr-only">Edit</span>
@@ -75,6 +69,9 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $invoice->expiration_date }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    Total: {{ $product->details->price * $product->amount }} €
                                 </td>
                                 <td class="px-6 py-4 flex items-center space-x-4">
                                     <a href="{{ route('invoices.edit', [

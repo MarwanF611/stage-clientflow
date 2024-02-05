@@ -8,11 +8,11 @@
 <head>
     <meta charset="utf-8" />
     <title>
-        Invoice {{ $invoice->id }}
+        Quote {{ $quote->id }}
     </title>
 
     <style>
-        .invoice-box {
+        .quote-box {
             max-width: 800px;
             margin: auto;
             padding: 30px;
@@ -24,66 +24,66 @@
             color: #555;
         }
 
-        .invoice-box table {
+        .quote-box table {
             width: 100%;
             line-height: inherit;
             text-align: left;
         }
 
-        .invoice-box table td {
+        .quote-box table td {
             padding: 5px;
             vertical-align: top;
         }
 
-        .invoice-box table tr td:nth-child(2) {
+        .quote-box table tr td:nth-child(2) {
             text-align: right;
         }
 
-        .invoice-box table tr.top table td {
+        .quote-box table tr.top table td {
             padding-bottom: 20px;
         }
 
-        .invoice-box table tr.top table td.title {
+        .quote-box table tr.top table td.title {
             font-size: 45px;
             line-height: 45px;
             color: #333;
         }
 
-        .invoice-box table tr.information table td {
+        .quote-box table tr.information table td {
             padding-bottom: 40px;
         }
 
-        .invoice-box table tr.heading td {
+        .quote-box table tr.heading td {
             background: #eee;
             border-bottom: 1px solid #ddd;
             font-weight: bold;
         }
 
-        .invoice-box table tr.details td {
+        .quote-box table tr.details td {
             padding-bottom: 20px;
         }
 
-        .invoice-box table tr.item td {
+        .quote-box table tr.item td {
             border-bottom: 1px solid #eee;
         }
 
-        .invoice-box table tr.item.last td {
+        .quote-box table tr.item.last td {
             border-bottom: none;
         }
 
-        .invoice-box table tr.total td:nth-child(2) {
+        .quote-box table tr.total td:nth-child(2) {
             border-top: 2px solid #eee;
             font-weight: bold;
         }
 
         @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
+            .quote-box table tr.top table td {
                 width: 100%;
                 display: block;
                 text-align: center;
             }
 
-            .invoice-box table tr.information table td {
+            .quote-box table tr.information table td {
                 width: 100%;
                 display: block;
                 text-align: center;
@@ -91,23 +91,23 @@
         }
 
         /** RTL **/
-        .invoice-box.rtl {
+        .quote-box.rtl {
             direction: rtl;
             font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
         }
 
-        .invoice-box.rtl table {
+        .quote-box.rtl table {
             text-align: right;
         }
 
-        .invoice-box.rtl table tr td:nth-child(2) {
+        .quote-box.rtl table tr td:nth-child(2) {
             text-align: left;
         }
     </style>
 </head>
 
 <body>
-    <div class="invoice-box">
+    <div class="quote-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
                 <td colspan="4">
@@ -119,9 +119,9 @@
                             </td>
 
                             <td>
-                                Invoice #: {{ $invoice->id }}<br />
+                                Quote #{{ $quote->id }}<br />
                                 Created: {{ Carbon::now()->format('F d, Y') }}<br />
-                                Due: {{ $invoice->expiration_date }}
+                                Expires: {{ Carbon::now()->addDays(30)->format('F d, Y') }}
                             </td>
                         </tr>
                     </table>
@@ -139,10 +139,10 @@
                             </td>
 
                             <td>
-                                {{ $invoice->customer->company_name }}.<br />
-                                {{ $invoice->customer->street_name }} {{ $invoice->customer->house_number }},
-                                {{ $invoice->customer->postcode }}<br />
-                                Tel. {{ $invoice->customer->phone_number }}<br />
+                                {{ $quote->customer->company_name }}.<br />
+                                {{ $quote->customer->street_name }} {{ $quote->customer->house_number }},
+                                {{ $quote->customer->postcode }}<br />
+                                Tel. {{ $quote->customer->phone_number }}<br />
 
                             </td>
                         </tr>
@@ -150,25 +150,13 @@
                 </td>
             </tr>
 
-            <tr class="heading">
-                <td>Payment Method</td>
 
-                <td colspan="4">
-                    Check #
-                </td>
-            </tr>
-
-            <tr class="details">
-                <td>{{ ucfirst($invoice->payment_method) }}</td>
-
-                <td colspan="4">1000</td>
-            </tr>
 
             <tr class="heading">
                 <td>Item</td>
                 <td>Amount</td>
                 <td>Price per unit</td>
-                <td colspan="4">Price</td>
+                <td colspan="3">Price</td>
 
             </tr>
 
@@ -177,7 +165,7 @@
                     <td>{{ $product->details->name }} </td>
                     <td>{{ $product->amount }}x</td>
                     <td>{{ $product->details->price }} EUR</td>
-                    <td colspan="4">{{ $product->details->price * $product->amount }} EUR</td>
+                    <td colspan="3">{{ $product->details->price * $product->amount }} EUR</td>
                 </tr>
             @endforeach
 
