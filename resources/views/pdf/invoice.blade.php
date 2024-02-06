@@ -161,14 +161,14 @@
             <tr class="details">
                 <td>{{ ucfirst($invoice->payment_method) }}</td>
 
-                <td colspan="4">1000</td>
+                <td colspan="5">1000</td>
             </tr>
 
             <tr class="heading">
                 <td>Item</td>
                 <td>Amount</td>
                 <td>Price per unit</td>
-                <td colspan="4">Price</td>
+                <td>Vat rate</td>
 
             </tr>
 
@@ -177,22 +177,45 @@
                     <td>{{ $product->details->name }} </td>
                     <td>{{ $product->amount }}x</td>
                     <td>{{ $product->details->price }} EUR</td>
-                    <td colspan="4">{{ $product->details->price * $product->amount }} EUR</td>
+                    <td>{{ $invoice->vat_rate * 100 }}%</td>
                 </tr>
             @endforeach
 
 
+            <tr class="total">
+                <td colspan="3">Subtotal:</td>
+                <td colspan="3">
+                    @php
+                        $subtotal = 0;
+                        foreach ($products as $product) {
+                            $subtotal += $product->details->price * $product->amount;
+                        }
+                        echo '€' . $subtotal . ',-';
+                    @endphp
+                </td>
+            </tr>
+            <tr class="total">
+                <td colspan="3">Vat:</td>
+                <td colspan="3">
+                    @php
+                        $vat = 0;
+                        foreach ($products as $product) {
+                            $vat += $product->details->price * $product->amount * $invoice->vat_rate;
+                        }
+                        echo '€' . $vat . ',-';
+                    @endphp
+                </td>
+            </tr>
 
             <tr class="total">
-                <td></td>
-
+                <td colspan="3">Total:</td>
                 <td colspan="3">
-                    Total:
                     @php
                         $total = 0;
                         foreach ($products as $product) {
                             $total += $product->details->price * $product->amount;
                         }
+                        $total += $vat;
                         echo '€' . $total . ',-';
                     @endphp
                 </td>

@@ -3,11 +3,15 @@
         <h2
             class=" flex display-flex justify-between font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Invoices
-            <x-primary-link route_name="invoices.create">
+
+            <x-primary-link route_name="invoices.create" id="add-invoice">
                 Add new invoice
+
             </x-primary-link>
         </h2>
     </x-slot>
+
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -108,6 +112,7 @@
             <div class="py-3">
                 {{ $invoices->links() }}
             </div>
+
         </div>
     </div>
 </x-app-layout>
