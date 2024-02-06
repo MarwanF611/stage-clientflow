@@ -10,8 +10,12 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+
 class InvoiceController extends Controller
 {
+
+
+    
     public function index()
     {
         $invoices = Invoice::simplePaginate(20);

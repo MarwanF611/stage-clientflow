@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('vat_number');
             $table->string('iban');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

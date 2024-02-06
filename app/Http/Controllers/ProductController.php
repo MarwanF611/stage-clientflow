@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-// Import UUID
 use Illuminate\Support\Str;
+
+
 
 class ProductController extends Controller
 {
+
+
+
     public function index()
     {
         $products = Product::simplePaginate(20);

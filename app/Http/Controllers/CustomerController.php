@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+
     public function index()
     {
         $customers = Customer::simplePaginate(20);
@@ -65,6 +66,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($request->id);
         $customer->delete();
+
 
         return redirect()->route('customers.index')
             ->with('success', 'Klant is succesvol verwijderd.');

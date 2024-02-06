@@ -7,9 +7,14 @@ use App\Models\Quote;
 use App\Models\Customer;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class QuoteController extends Controller
 {
+
+
+
     public function index()
     {
         $quotes = Quote::simplePaginate(20);
