@@ -13,13 +13,26 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = Invoice::simplePaginate(20);
-     
+
+       foreach ($invoices as $invoice) {
+        $invoicePrice = 0;
+        $products = json_decode($invoice->products);
+
+        foreach ($products as $product) {
+            $product->details = Product::find($product->id);
+            $invoicePrice += $product->details->price * $product->amount;
+        }
+
+        $invoice->price = $invoicePrice;
+        }
+       
+        
+       
 
         $invoices->withPath('invoices');
 
         return view('invoices.index', [
             'invoices' => $invoices,
-       
         ]);
     }
 

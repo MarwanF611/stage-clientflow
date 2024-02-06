@@ -16,6 +16,7 @@ class Invoice extends Model
         'payment_method',
         'status',
         'products',
+        'vat_rate',
         'customer_id',
     ];
 
