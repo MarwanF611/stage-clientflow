@@ -86,6 +86,12 @@
                                         class="font-medium text-gray-300 hover:underline">
                                         @svg('heroicon-s-cloud-arrow-down', 'h-5 w-5')
                                     </a>
+                                    <a href="{{ route('invoices.mail', [
+                                        'id' => $invoice->id,
+                                    ]) }}"
+                                        class="font-medium text-gray-300 hover:underline">
+                                        @svg('heroicon-o-envelope', 'h-5 w-5')
+                                    </a>
                                     <a href="{{ route('invoices.delete', [
                                         'id' => $invoice->id,
                                     ]) }}"

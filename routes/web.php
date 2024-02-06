@@ -65,6 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoices/delete', [InvoiceController::class, 'delete'])->name('invoices.delete');
     Route::get('/invoices/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
     Route::post('/invoices/update', [InvoiceController::class, 'update'])->name('invoices.update');
+    Route::get('/invoices/mail', [InvoiceController::class, 'sendMail'])->name('invoices.mail');
 });
 
 require __DIR__ . '/auth.php';
