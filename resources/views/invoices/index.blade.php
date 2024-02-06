@@ -71,7 +71,7 @@
                                     {{ $invoice->expiration_date }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    Total: {{ $product->details->price * $product->amount }} €
+                                    {{ $invoice->price }} €
                                 </td>
                                 <td class="px-6 py-4 flex items-center space-x-4">
                                     <a href="{{ route('invoices.edit', [

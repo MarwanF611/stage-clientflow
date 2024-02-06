@@ -1,6 +1,5 @@
--BTW toevoegen (Standaard 21% eventueel select voor verschillende percentages) -Ray
--Add custom product -Ray
--Automatisch factuur versturen via email (mailtrap) -RAY
--Bedrag factuur in lijst -Marwan
--automatisch open, experid of completed aan de hand van model met input die van totaal prijs vergelijk -Ray
--(creditnota) -Ray
+-BTW toevoegen (Standaard 21% eventueel select voor verschillende percentages)
+-Add custom product
+-Automatisch factuur versturen via email (mailtrap)
+-automatisch open, experid of completed aan de hand van model met input die van totaal prijs vergelijk
+-(creditnota)
