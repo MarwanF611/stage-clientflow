@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('type');
             $table->decimal('price', 8, 2);
             $table->integer('stock');
-            $table->text('image');
+            $table->text('image')->nullable(); // Make 'image' column nullable
+           
         });
+        
     }
 
     /**

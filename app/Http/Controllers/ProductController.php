@@ -27,20 +27,33 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
+        $new_filename = null;
+
+        // Validate request
         $request->validate([
             'name'  => 'required',
             'type' => 'required',
             'price' => 'required|numeric|min:0|max:9999',
             'stock' => 'required|integer|min:0',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Get image file
-        $image = $request->file('image');
-        $new_filename = Str::uuid() . '.' . $image->getClientOriginalExtension();
+        //image is not required
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        }
 
-        // Store image file on disk
-        $image->storeAs('public/images', $new_filename);
+        if ($request->hasFile('image')) {
+            // Get image file
+            $image = $request->file('image');
+            $new_filename = Str::uuid() . '.' . $image->getClientOriginalExtension();
+
+            // Store image file on disk
+            $image->storeAs('public/images', $new_filename);
+        }
 
         // Create product
         $product = new Product([
@@ -83,12 +96,12 @@ class ProductController extends Controller
             'type' => 'required',
             'price' => 'required|numeric|min:0|max:9999',
             'stock' => 'required|integer|min:0',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
             $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
             // Get image file
