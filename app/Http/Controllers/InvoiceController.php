@@ -120,7 +120,7 @@ class InvoiceController extends Controller
         );
     }
 
-    public function mailInvoice(
+    public function sendMail(
         Request $request,
     ) {
         $invoice = Invoice::find($request->id);
@@ -136,16 +136,20 @@ class InvoiceController extends Controller
         ]);
 
         $pdf->save(
-            public_path('invoice.pdf')
-        )->stream('download.pdf');
+            public_path('/storage/invoice_' . $invoice->id . '.pdf')
+        )->stream(
+            'invoice.pdf'
+        );
 
 
-        $email = new MailableInvoice();
-        $email->to('');
-        $email->subject('Invoice');
-        $email->attach('invoice.pdf');
 
-        Mail::send($email);
+        $mail = Mail::to('testreceiver@gmail.com')->send(new MailableInvoice(
+            auth()->user()->name,
+            $invoice,
+            $products,
+            public_path('/storage/invoice_' . $invoice->id . '.pdf')
+        ));
+
 
         return redirect()->route('invoices.index')
             ->with('success', 'Invoice sent successfully.');
