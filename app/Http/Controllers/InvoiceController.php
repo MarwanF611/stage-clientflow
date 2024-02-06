@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailableInvoice;
 use App\Models\Invoice;
 use App\Models\Customer;
 use App\Models\Product;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class InvoiceController extends Controller
 {
     public function index()
     {
         $invoices = Invoice::simplePaginate(20);
-     
+
 
         $invoices->withPath('invoices');
 
         return view('invoices.index', [
             'invoices' => $invoices,
-       
+
         ]);
     }
 
@@ -99,6 +101,38 @@ class InvoiceController extends Controller
             'invoice_R' . random_int(1000, 9999) . '.pdf'
         );
     }
+
+    public function mailInvoice(
+        Request $request,
+    ) {
+        $invoice = Invoice::find($request->id);
+        $products = json_decode($invoice->products);
+
+        foreach ($products as $product) {
+            $product->details = Product::find($product->id);
+        }
+
+        $pdf = Pdf::loadView('pdf.invoice', [
+            'invoice' => $invoice,
+            'products' => $products,
+        ]);
+
+        $pdf->save(
+            public_path('invoice.pdf')
+        )->stream('download.pdf');
+
+
+        $email = new MailableInvoice();
+        $email->to('');
+        $email->subject('Invoice');
+        $email->attach('invoice.pdf');
+
+        Mail::send($email);
+
+        return redirect()->route('invoices.index')
+            ->with('success', 'Invoice sent successfully.');
+    }
+
 
     public function delete(
         Request $request,
