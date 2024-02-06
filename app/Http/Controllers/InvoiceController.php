@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Mail;
 
 class InvoiceController extends Controller
 {
-
-
-    
     public function index()
     {
         $invoices = Invoice::simplePaginate(20);
@@ -23,12 +20,15 @@ class InvoiceController extends Controller
         foreach ($invoices as $invoice) {
             $invoicePrice = 0;
             $products = json_decode($invoice->products);
+          
 
             foreach ($products as $product) {
                 $product->details = Product::find($product->id);
+              
                 $invoicePrice += $product->details->price * $product->amount;
             }
 
+        
             $invoice->price = $invoicePrice;
         }
 
@@ -62,6 +62,7 @@ class InvoiceController extends Controller
             'product_amount_0' => 'required',
             'expiration_date' => 'required|date',
             'status' => 'required',
+            'vat_rate' => 'required',   
         ]);
 
         // If expiration date is in the past, return to form
@@ -94,6 +95,7 @@ class InvoiceController extends Controller
             'products' => json_encode($products),
             'expiration_date' => $datetime->format('Y-m-d'),
             'status' => $request->input('status'),
+            'vat_rate' => $request->input('vat_rate'),
         ]);
 
         return redirect()->route('invoices.index')
@@ -195,6 +197,7 @@ class InvoiceController extends Controller
             'product_amount_0' => 'required',
             'expiration_date' => 'required|date',
             'status' => 'required',
+            'vat_rate' => 'required',
         ]);
 
         // If expiration date is in the past, return to form
@@ -229,6 +232,7 @@ class InvoiceController extends Controller
         $invoice->products = json_encode($products);
         $invoice->expiration_date = $datetime->format('Y-m-d');
         $invoice->status = $request->input('status');
+        $invoice->vat_rate = $request->input('vat_rate');
         $invoice->save();
 
         return redirect()->route('invoices.index')

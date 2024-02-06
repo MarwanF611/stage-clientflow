@@ -66,6 +66,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($request->id);
         $customer->delete();
+        $customer->trashed();
 
 
         return redirect()->route('customers.index')
