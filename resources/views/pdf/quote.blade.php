@@ -181,7 +181,7 @@
                         foreach ($products as $product) {
                             $total += $product->details->price * $product->amount;
                         }
-                        echo '€' . $total . ',-';
+                        echo '€' . number_format($total, 2, ',', '.') . ',-';
                     @endphp
                 </td>
             </tr>

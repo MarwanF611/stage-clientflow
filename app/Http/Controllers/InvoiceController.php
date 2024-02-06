@@ -46,9 +46,11 @@ class InvoiceController extends Controller
     public function create()
     {
         $customers = Customer::all();
+        $products = Product::all();
 
         return view('invoices.create', [
             'customers' => $customers,
+            'products' => $products,
         ]);
     }
 

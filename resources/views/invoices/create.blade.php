@@ -21,10 +21,6 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Customer
                                     </label>
-                                    {{-- <input type="text" name="customer" id="customer"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Customer ID" required> --}}
-
                                     <select name="customer" id="customer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         @foreach ($customers as $customer)
@@ -142,51 +138,56 @@
                                 </div>
                                 <div class="border-t w-full col-span-2 border-gray-600"></div>
 
-                                <div class="w-full">
+
+
+                                <div class="col-span-1">
                                     <label for="product_id_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Product ID
                                     </label>
-                                    <input type="text" name="product_id_0" id="product_id_0"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="XXXXX" required>
+                                    <select name="product_id_0" id="product_id_0"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">
+                                                {{ $product->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
 
                                     @error('product_id_0')
                                         <div class="text-red-500 mt-2 text-sm">
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
-                                <div class="w-full">
-                                    <label for="product_amount_0"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Amount
-                                    </label>
-                                    <input type="text" name="product_amount_0" id="product_amount_0"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="000" required>
+                                    <div class="w-full">
+                                        <label for="product_amount_0"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                            Amount
+                                        </label>
+                                        <input type="text" name="product_amount_0" id="product_amount_0"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="000" required>
 
-                                    @error('product_aantal')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                        @error('product_aantal')
+                                            <div class="text-red-500 mt-2 text-sm">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div id="products-parent" class="w-full col-span-2">
+                                    </div>
                                 </div>
-                                <div id="products-parent" class="w-full col-span-2">
+
+                                <div class="flex flex-col">
+                                    <button type="button" onclick="addProduct()"
+                                        class="inline-flex items-center px-5 w-fit py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-600 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-500">
+                                        Add product @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
+                                    </button>
+                                    <button type="submit"
+                                        class="inline-flex w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                        Create invoice @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
+                                    </button>
                                 </div>
-                            </div>
-
-                            <div class="flex flex-col">
-                                <button type="button" onclick="addProduct()"
-                                    class="inline-flex items-center px-5 w-fit py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-600 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-500">
-                                    Add product @svg('heroicon-o-plus', 'w-4 h-4 ml-2')
-                                </button>
-
-                                <button type="submit"
-                                    class="inline-flex w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                    Create invoice @svg('heroicon-o-arrow-right', 'w-4 h-4 ml-2')
-                                </button>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -202,44 +203,45 @@
     function addProduct() {
         productCount++;
         document.getElementById("products-parent").innerHTML += `
-        <div id="p_id_${productCount}" class="w-full col-span-2 grid grid-cols-2 gap-6">
-        <div >
-                                        <label for="product_id_${productCount}"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Product ID
-                                        </label>
-                                        <input type="text" name="product_id_${productCount}" id="product_id_${productCount}"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            placeholder="XXXX" required>
+            <div id="p_id_${productCount}" class="w-full">
+                <label for="product_id_${productCount}"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Product ID
+                </label>
+                <select name="product_id_${productCount}" id="product_id_${productCount}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    @foreach ($products as $product)
+                        <option value="{{ $product->id }}">
+                            {{ $product->name }}
+                        </option>
+                    @endforeach
+                </select>
 
-                                        @error('product_id_${productCount}')
-    <div class="text-red-500 mt-2 text-sm">
-                                                                        {{ $message }}
-                                                                    </div>
-@enderror
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <div class="flex-1">
-                                        <label for="product_aantal_${productCount}"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Amount
-                                        </label>
-                                        <input type="text" name="product_aantal_${productCount}" id="product_aantal_${productCount}"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            placeholder="000" required>
+                @error('product_id_${productCount}')
+                    <div class="text-red-500 mt-2 text-sm">
+                        {{ $message }}
+                    </div>
+                @enderror
+                <div class="w-full">
+                    <label for="product_amount_${productCount}"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Amount
+                    </label>
+                    <input type="text" name="product_amount_${productCount}" id="product_amount_${productCount}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="000" required>
 
-                                        @error('product_aantal_${productCount}')
-    <div class="text-red-500 mt-2 text-sm">
-                                                                        {{ $message }}
-                                                                    </div>
-@enderror
-                                        </div>
-                                        <button type="button" onclick="removeProduct(${productCount})"
-                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                        @svg('heroicon-s-trash', 'h-5 w-5')
-                                    </button>
-                                    </div>
-                                    </div>
+                    @error('product_aantal')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <button type="button" onclick="removeProduct(${productCount})"
+                    class="inline-flex items-center px-5 w-fit py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-red-600 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-red-500">
+                @svg('heroicon-s-trash', 'h-5 w-5')
+                </button>
+            </div>
         `;
     }
 

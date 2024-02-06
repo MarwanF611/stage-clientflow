@@ -6,12 +6,9 @@
 
             <x-primary-link route_name="invoices.create" id="add-invoice">
                 Add new invoice
-
             </x-primary-link>
         </h2>
     </x-slot>
-
-
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

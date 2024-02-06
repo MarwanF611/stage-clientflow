@@ -190,7 +190,7 @@
                         foreach ($products as $product) {
                             $subtotal += $product->details->price * $product->amount;
                         }
-                        echo '€' . $subtotal . ',-';
+                        echo '€' . number_format($subtotal, 2, ',', '.') . ',-';
                     @endphp
                 </td>
             </tr>
@@ -202,7 +202,7 @@
                         foreach ($products as $product) {
                             $vat += $product->details->price * $product->amount * $invoice->vat_rate;
                         }
-                        echo '€' . $vat . ',-';
+                        echo '€' . number_format($vat, 2, ',', '.') . ',-';
                     @endphp
                 </td>
             </tr>
@@ -216,7 +216,7 @@
                             $total += $product->details->price * $product->amount;
                         }
                         $total += $vat;
-                        echo '€' . $total . ',-';
+                        echo '€' . number_format($total, 2, ',', '.') . ',-';
                     @endphp
                 </td>
             </tr>

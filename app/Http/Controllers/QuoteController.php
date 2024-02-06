@@ -29,9 +29,11 @@ class QuoteController extends Controller
     public function create()
     {
         $customers = Customer::all();
+        $products = Product::all();
 
         return view('quotes.create', [
             'customers' => $customers,
+            'products' => $products,
         ]);
 
     }
