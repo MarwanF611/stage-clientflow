@@ -1,4 +1,4 @@
--BTW toevoegen (Standaard 21% eventueel select voor verschillende percentages)
+
 -Add custom product
 -automatisch open, experid of completed aan de hand van model met input die van totaal prijs vergelijk
 -(creditnota)
