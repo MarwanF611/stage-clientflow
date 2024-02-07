@@ -10,7 +10,7 @@
         </h2>
     </x-slot>
 
-    < class="py-12">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -69,7 +69,7 @@
 
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $invoice->expiration_date }}
+                                    {{ $invoice->expiration_date->format('d/m/Y') }}
                                 </td>
                                 <td class="px-6 py-4">
 
@@ -152,6 +152,5 @@
                 </div>
             @endif
         </div>
-
-        </div>
+    </div>
 </x-app-layout>

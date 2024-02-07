@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Invoice extends Model
 {
-
     use SoftDeletes;
     use HasFactory;
+
     protected $table = 'invoices';
+
+    protected $casts = ['expiration_date' => 'date'];
 
     protected $fillable = [
         'expiration_date',

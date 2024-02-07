@@ -20,7 +20,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="customer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Customer
+                                        Customer <span class="text-sm text-red-500">*</span>
                                     </label>
                                     {{-- <input type="text" name="customer" id="customer"
                                         value="{{ $invoice->customer->id }}"
@@ -51,7 +51,8 @@
                                 <div>
                                     <label for="payment_method"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment
-                                        method</label>
+                                        method <span class="text-sm text-red-500">*</span>
+                                    </label>
                                     <select id="payment_method" name="payment_method"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="cash"
@@ -75,7 +76,7 @@
                                 <div>
                                     <label for="telefoonnummer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Telefoonnummer
+                                        Telefoonnummer <span class="text-sm text-red-500">*</span>
                                     </label>
 
                                     <input type="text" name="phone_number" id="telefoonnummer"
@@ -92,7 +93,7 @@
                                 <div>
                                     <label for="expiration_date"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Expiration date
+                                        Expiration date <span class="text-sm text-red-500">*</span>
                                     </label>
 
 
@@ -106,9 +107,9 @@
                                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input datepicker datepicker-autohide type="text"
-                                            value="{{ $invoice->expiration_date }}" id="expiration_date"
-                                            name="expiration_date"
+                                        <input datepicker datepicker-autohide datepicker-format="dd/mm/yyyy"
+                                            type="text" value="{{ $invoice->expiration_date->format('d/m/Y') }}"
+                                            id="expiration_date" name="expiration_date"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Select date">
                                     </div>
@@ -121,7 +122,8 @@
                                 </div>
                                 <div>
                                     <label for="status"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
+                                        <span class="text-sm text-red-500">*</span></label>
                                     <select id="status" name="status"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="open" {{ $invoice->status == 'open' ? 'selected' : '' }}>Open
@@ -141,7 +143,8 @@
                                 <div class="col-span-2">
                                     <label for="vat_rate"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">vat
-                                        rate</label>
+                                        rate <span class="text-sm text-red-500">*</span>
+                                    </label>
                                     <select id="vat_rate" name="vat_rate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option value="0.21" {{ $invoice->vat_rate == '21%' ? 'selected' : '' }}>21%
@@ -171,7 +174,7 @@
                                     <div class="w-full">
                                         <label for="product_id_{{ $productCount }}"
                                             class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">
-                                            Product ID
+                                            Product Name <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="product_id_{{ $productCount }}"
                                             id="product_id_{{ $productCount }}" value="{{ $product->id }}"
@@ -187,7 +190,7 @@
                                     <div class="w-full">
                                         <label for="product_amount_{{ $productCount }}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Aantal
+                                            Aantal <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="product_amount_{{ $productCount }}"
                                             id="product_amount_{{ $productCount }}" value="{{ $product->amount }}"
