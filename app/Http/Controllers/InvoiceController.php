@@ -22,19 +22,18 @@ class InvoiceController extends Controller
             $products = json_decode($invoice->products);
             $vat = 0;
             $total = 0;
-          
+
 
             foreach ($products as $product) {
                 $product->details = Product::find($product->id);
 
                 $vat += $product->details->price * $product->amount * $invoice->vat_rate;
                 $total += $product->details->price * $product->amount;
-              
+
                 $invoicePrice += $total + $vat;
-                
             }
 
-        
+
             $invoice->price = $invoicePrice;
         }
 
@@ -54,6 +53,29 @@ class InvoiceController extends Controller
         $customers = Customer::all();
         $products = Product::all();
 
+
+
+        if (count($customers) == 0) {
+            return redirect()->route('invoices.index')
+                ->with(
+                    [
+                        'error' => 'You need to create a customer first',
+                        'route' => 'customers.create',
+                    ]
+                );
+        }
+
+
+        if (count($products) == 0) {
+            return redirect()->route('invoices.index')
+                ->with(
+                    [
+                        'error' => 'You need to create a product first',
+                        'route' => 'products.create',
+                    ]
+                );
+        }
+
         return view('invoices.create', [
             'customers' => $customers,
             'products' => $products,
@@ -70,7 +92,7 @@ class InvoiceController extends Controller
             'product_amount_0' => 'required',
             'expiration_date' => 'required|date',
             'status' => 'required',
-            'vat_rate' => 'required',   
+            'vat_rate' => 'required',
         ]);
 
         // If expiration date is in the past, return to form
