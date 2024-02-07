@@ -20,12 +20,18 @@ class InvoiceController extends Controller
         foreach ($invoices as $invoice) {
             $invoicePrice = 0;
             $products = json_decode($invoice->products);
+            $vat = 0;
+            $total = 0;
           
 
             foreach ($products as $product) {
                 $product->details = Product::find($product->id);
+
+                $vat += $product->details->price * $product->amount * $invoice->vat_rate;
+                $total += $product->details->price * $product->amount;
               
-                $invoicePrice += $product->details->price * $product->amount;
+                $invoicePrice += $total + $vat;
+                
             }
 
         
@@ -46,9 +52,11 @@ class InvoiceController extends Controller
     public function create()
     {
         $customers = Customer::all();
+        $products = Product::all();
 
         return view('invoices.create', [
             'customers' => $customers,
+            'products' => $products,
         ]);
     }
 

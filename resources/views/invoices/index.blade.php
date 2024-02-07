@@ -6,12 +6,9 @@
 
             <x-primary-link route_name="invoices.create" id="add-invoice">
                 Add new invoice
-
             </x-primary-link>
         </h2>
     </x-slot>
-
-
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -75,7 +72,8 @@
                                     {{ $invoice->expiration_date }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $invoice->price }} €
+
+                                    {{ number_format($invoice->price, 2, ',', '.') }} €
                                 </td>
                                 <td class="px-6 py-4 flex items-center space-x-4">
                                     <a href="{{ route('invoices.edit', [
