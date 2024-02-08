@@ -198,6 +198,7 @@ class InvoiceController extends Controller
 
     public function edit(
         Request $request,
+        
     ) {
         $invoice = Invoice::find($request->id);
         $products = json_decode($invoice->products);
