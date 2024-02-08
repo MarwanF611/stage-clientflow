@@ -22,7 +22,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="email"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Email
+                                        Email <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <input type="email" name="email" id="email" value="{{ $customer->email }}"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -37,7 +37,7 @@
                                 <div class="w-full">
                                     <label for="voornaam"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Voornaam
+                                        Voornaam <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <input type="text" name="first_name" id="voornaam"
                                         value="{{ $customer->first_name }}"
@@ -53,7 +53,7 @@
                                 <div class="w-full">
                                     <label for="achternaam"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Achternaam
+                                        Achternaam <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <input type="text" name="last_name" id="achternaam"
                                         value="{{ $customer->last_name }}"
@@ -68,7 +68,9 @@
                                 </div>
                                 <div>
                                     <label for="land"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Land</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Land <span
+                                            class="text-sm text-red-500">*</span>
+                                    </label>
                                     <select id="land" name="country"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="Nederland">Nederland</option>
@@ -89,7 +91,7 @@
                                 <div>
                                     <label for="telefoonnummer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Telefoonnummer
+                                        Telefoonnummer <span class="text-sm text-red-500">*</span>
                                     </label>
 
                                     <input type="text" name="phone_number" id="telefoonnummer"
@@ -108,7 +110,7 @@
                                     <div>
                                         <label for="straatnaam"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Straatnaam
+                                            Straatnaam <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="street_name" id="straatnaam"
                                             value="{{ $customer->street_name }}"
@@ -124,7 +126,7 @@
                                     <div>
                                         <label for="huisnummer"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Huisnummer
+                                            Huisnummer <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="house_number" id="huisnummer"
                                             value="{{ $customer->house_number }}"
@@ -141,7 +143,7 @@
                                     <div>
                                         <label for="postcode"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Postcode
+                                            Postcode <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="postcode" id="postcode"
                                             value="{{ $customer->postcode }}"
@@ -163,7 +165,7 @@
                                 <div class="w-full">
                                     <label for="bedrijfsnaam"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Bedrijfsnaam
+                                        Bedrijfsnaam <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <input type="text" name="company_name" id="bedrijfsnaam"
                                         value="{{ $customer->company_name }}"
@@ -179,7 +181,7 @@
                                 <div class="w-full">
                                     <label for="btw_nummer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        BTW-nummer
+                                        BTW-nummer <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <input type="text" name="vat_number" id="btw_nummer"
                                         value="{{ $customer->vat_number }}"
@@ -195,7 +197,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="iban"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        IBAN
+                                        IBAN <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <input type="text" name="iban" id="iban" rows="3"
                                         value="{{ $customer->iban }}"

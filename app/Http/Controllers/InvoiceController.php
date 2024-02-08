@@ -90,13 +90,13 @@ class InvoiceController extends Controller
             'payment_method' => 'required',
             'product_id_0' => 'required',
             'product_amount_0' => 'required',
-            'expiration_date' => 'required|date',
+            'expiration_date' => 'required|date_format:d/m/Y',
             'status' => 'required',
             'vat_rate' => 'required',
         ]);
 
         // If expiration date is in the past, return to form
-        $datetime = new \DateTime($request->input('expiration_date'));
+        $datetime = \DateTime::createFromFormat('d/m/Y', $request->input('expiration_date'));
         if ($datetime < new \DateTime()) {
             return redirect()->route('invoices.create')
                 ->withErrors([
@@ -116,8 +116,6 @@ class InvoiceController extends Controller
             ];
             $i++;
         }
-
-        $datetime = new \DateTime($request->input('expiration_date'));
 
         $invoice = Invoice::create([
             'customer_id' => $request->input('customer'),
@@ -225,14 +223,14 @@ class InvoiceController extends Controller
             'payment_method' => 'required',
             'product_id_0' => 'required',
             'product_amount_0' => 'required',
-            'expiration_date' => 'required|date',
+            'expiration_date' => 'required|date_format:d/m/Y',
             'status' => 'required',
             'vat_rate' => 'required',
         ]);
 
         // If expiration date is in the past, return to form
-        $datetime = new \DateTime($request->input('expiration_date'));
-        if ($datetime < new \DateTime()) {
+        $datetime = \DateTime::createFromFormat('d/m/Y', $request->input('expiration_date'));
+        if ($datetime < now()) {
             return redirect()->route('invoices.edit', [
                 'id' => $request->id,
             ])->withErrors([
@@ -252,8 +250,6 @@ class InvoiceController extends Controller
             ];
             $i++;
         }
-
-        $datetime = new \DateTime($request->input('expiration_date'));
 
         $invoice = Invoice::find($request->id);
 

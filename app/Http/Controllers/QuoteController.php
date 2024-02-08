@@ -31,6 +31,27 @@ class QuoteController extends Controller
         $customers = Customer::all();
         $products = Product::all();
 
+        if (count($customers) == 0) {
+            return redirect()->route('quotes.index')
+                ->with(
+                    [
+                        'error' => 'You need to create a customer first',
+                        'route' => 'customers.create',
+                    ]
+                );
+        }
+
+
+        if (count($products) == 0) {
+            return redirect()->route('quotes.index')
+                ->with(
+                    [
+                        'error' => 'You need to create a product first',
+                        'route' => 'products.create',
+                    ]
+                );
+        }
+
         return view('quotes.create', [
             'customers' => $customers,
             'products' => $products,

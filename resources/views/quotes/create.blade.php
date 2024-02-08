@@ -19,7 +19,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="customer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Customer
+                                        Customer <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <select name="customer" id="customer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -42,7 +42,7 @@
                                 <div class="col-span-2">
                                     <label for="product_id_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Product ID
+                                        Product name <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <select name="product_id_0" id="product_id_0"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -61,7 +61,7 @@
                                     <div class="w-full">
                                         <label for="product_amount_0"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Amount
+                                            Amount <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="product_amount_0" id="product_amount_0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"

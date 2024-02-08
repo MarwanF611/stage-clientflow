@@ -19,7 +19,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="customer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Customer
+                                        Customer <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <select name="customer" id="customer"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -42,7 +42,7 @@
                                 <div>
                                     <label for="payment_method"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Payment method
+                                        Payment method <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <select id="payment_method" name="payment_method"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -61,7 +61,7 @@
                                 <div>
                                     <label for="telefoonnummer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Phonenumber
+                                        Phonenumber <span class="text-sm text-red-500">*</span>
                                     </label>
 
                                     <input type="text" name="phone_number" id="telefoonnummer"
@@ -77,7 +77,7 @@
                                 <div>
                                     <label for="expiration_date"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Expiration date
+                                        Expiration date <span class="text-sm text-red-500">*</span>
                                     </label>
 
 
@@ -104,7 +104,9 @@
                                 </div>
                                 <div>
                                     <label for="status"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
+                                        <span class="text-sm text-red-500">*</span>
+                                    </label>
                                     <select id="status" name="status"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option value="open">Open</option>
@@ -121,7 +123,8 @@
                                 <div class="col-span-2">
                                     <label for="vat_rate"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">vat
-                                        rate</label>
+                                        rate <span class="text-sm text-red-500">*</span>
+                                    </label>
                                     <select id="vat_rate" name="vat_rate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option value="0.21">21%</option>
@@ -143,7 +146,7 @@
                                 <div class="col-span-1">
                                     <label for="product_id_0"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Product ID
+                                        Product Name <span class="text-sm text-red-500">*</span>
                                     </label>
                                     <select name="product_id_0" id="product_id_0"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -162,7 +165,7 @@
                                     <div class="w-full">
                                         <label for="product_amount_0"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Amount
+                                            Amount <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="product_amount_0" id="product_amount_0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"

@@ -20,7 +20,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="customer"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Customer
+                                        Customer <span class="text-sm text-red-500">*</span>
                                     </label>
                                     {{-- <input type="text" name="customer" id="customer"
                                         value="{{ $quote->customer->id }}"
@@ -60,7 +60,7 @@
                                     <div class="w-full">
                                         <label for="product_id_{{ $productCount }}"
                                             class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">
-                                            Product ID
+                                            Product name <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="product_id_{{ $productCount }}"
                                             id="product_id_{{ $productCount }}" value="{{ $product->id }}"
@@ -76,7 +76,7 @@
                                     <div class="w-full">
                                         <label for="product_amount_{{ $productCount }}"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            Aantal
+                                            Aantal <span class="text-sm text-red-500">*</span>
                                         </label>
                                         <input type="text" name="product_amount_{{ $productCount }}"
                                             id="product_amount_{{ $productCount }}" value="{{ $product->amount }}"
