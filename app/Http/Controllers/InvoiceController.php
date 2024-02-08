@@ -173,13 +173,15 @@ class InvoiceController extends Controller
 
 
 
-        $mail = Mail::to('testreceiver@gmail.com')->send(new MailableInvoice(
+        Mail::to('testreceiver@gmail.com')->send(new MailableInvoice(
             auth()->user()->name,
             $invoice,
             $products,
             public_path('/storage/invoice_' . $invoice->id . '.pdf')
         ));
 
+        $invoice->is_sent = true;
+        $invoice->save();
 
         return redirect()->route('invoices.index')
             ->with('success', 'Invoice sent successfully.');
