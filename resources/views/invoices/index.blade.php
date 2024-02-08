@@ -140,7 +140,7 @@
                             <div class="bg-gray-800 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                 <a href="{{ route(session('route')) }}"
                                     class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">Create</a>
-                                <a href="{{ $_SERVER['REQUEST_URI'] }}"
+                                <a href="{{ route('invoices.index') }}"
                                     class="mt-3 inline-flex w-full justify-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-700 sm:mt-0 sm:w-auto">Cancel</a>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                                     'id' => $invoice->id,
                                 ]) }}"
                                     class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">Send</a>
-                                <a href="{{ $_SERVER['REQUEST_URI'] }}"
+                                <a href="{{ route('invoices.index') }}"
                                     class="mt-3 inline-flex w-full justify-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-700 sm:mt-0 sm:w-auto">Cancel</a>
                             </div>
                         </div>
@@ -223,10 +223,8 @@
                                         'id' => $invoice->id,
                                     ]) }}"
                                         class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Delete</a>
-                                    <a href="{{ $_SERVER['REQUEST_URI'] }}"
-                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-gray-800 px-3 py-2 text-sm
-                                    font-semibold text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-700 sm:mt-0 sm:w-auto">Cancel</a>
-
+                                    <a href="{{ route('invoices.index') }}"
+                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-700 sm:mt-0 sm:w-auto">Cancel</a>
                                 </div>
                             </div>
                         </div>
