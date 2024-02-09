@@ -56,7 +56,6 @@ class QuoteController extends Controller
             'customers' => $customers,
             'products' => $products,
         ]);
-
     }
 
     public function store(
@@ -123,7 +122,7 @@ class QuoteController extends Controller
 
     ) {
         $quote = Quote::find($request->id);
-        $products = Product::all(); 
+        $products = Product::all();
         $customers = Customer::all();
 
         return view('quotes.edit', [
