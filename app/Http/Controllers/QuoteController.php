@@ -123,7 +123,7 @@ class QuoteController extends Controller
 
     ) {
         $quote = Quote::find($request->id);
-        $products = json_decode($quote->products);
+        $products = Product::all(); 
         $customers = Customer::all();
 
         return view('quotes.edit', [
